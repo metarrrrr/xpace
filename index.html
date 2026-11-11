@@ -1,27 +1,28 @@
 <!DOCTYPE html>
 <html lang="ko"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>Project Xpace &#54632;&#49440; &#46020;&#44048;</title><style>
-:root { --bg:#0e1117; --panel:#161b24; --line:#283040; --text:#dfe6f1; --muted:#8b98ad; --accent:#6cc6ff; --tag:#1f2a3a; }
+:root { --bg:#0e1117; --panel:#161b24; --line:#283040; --text:#dfe6f1; --muted:#8b98ad; --accent:#6cc6ff; --tag:#1f2a3a; --pick:#1d3350; }
 @media (prefers-color-scheme: light) {
-  :root { --bg:#f4f6fa; --panel:#ffffff; --line:#d9dfe9; --text:#1c2430; --muted:#5f6b7d; --accent:#0b6fbf; --tag:#e8eef7; }
+  :root { --bg:#f4f6fa; --panel:#ffffff; --line:#d9dfe9; --text:#1c2430; --muted:#5f6b7d; --accent:#0b6fbf; --tag:#e8eef7; --pick:#dcebfb; }
 }
 * { box-sizing:border-box; }
 body { margin:0; background:var(--bg); color:var(--text); font:14px/1.55 -apple-system,'Apple SD Gothic Neo','Malgun Gothic',sans-serif; }
-header { position:sticky; top:0; z-index:2; background:var(--panel); border-bottom:1px solid var(--line); padding:10px 20px; }
-header h1 { margin:0; font-size:17px; display:inline-block; margin-right:14px; }
-header .stamp { color:var(--muted); font-size:12px; }
-header input { float:right; width:220px; padding:5px 9px; border:1px solid var(--line); border-radius:6px; background:var(--bg); color:var(--text); }
-nav { margin-top:8px; font-size:12.5px; line-height:1.9; }
-nav b { color:var(--muted); margin-right:6px; }
-nav a { color:var(--accent); text-decoration:none; margin-right:10px; white-space:nowrap; }
-nav a:hover { text-decoration:underline; }
-main { padding:8px 20px 60px; max-width:1500px; margin:0 auto; }
-section > h2 { margin:28px 0 2px; font-size:19px; scroll-margin-top:130px; }
-section > p.note { margin:0 0 10px; color:var(--muted); }
-.cards { display:grid; grid-template-columns:repeat(auto-fill,minmax(430px,1fr)); gap:14px; align-items:start; }
-.card { background:var(--panel); border:1px solid var(--line); border-radius:10px; padding:14px 16px; scroll-margin-top:130px; }
-.card h3 { margin:0; font-size:16px; }
+aside { position:fixed; top:0; left:0; bottom:0; width:250px; overflow-y:auto; background:var(--panel); border-right:1px solid var(--line); padding:14px 12px 30px; }
+aside h1 { margin:0 0 2px; font-size:16px; }
+aside .stamp { color:var(--muted); font-size:11.5px; margin-bottom:10px; }
+aside input { width:100%; padding:6px 9px; border:1px solid var(--line); border-radius:6px; background:var(--bg); color:var(--text); }
+nav h2 { margin:16px 0 4px; font-size:12px; color:var(--muted); font-weight:600; }
+nav ul { list-style:none; margin:0; padding:0; }
+nav a { display:block; padding:5px 9px; border-radius:6px; color:var(--text); text-decoration:none; }
+nav a:hover { background:var(--tag); }
+nav a.selected { background:var(--pick); color:var(--accent); font-weight:600; }
+nav .empty { color:var(--muted); padding:5px 9px; }
+main { margin-left:250px; padding:18px 26px 60px; max-width:1010px; }
+section > h2 { margin:0 0 2px; font-size:13px; color:var(--muted); font-weight:600; }
+section > p.note { margin:0 0 12px; color:var(--muted); font-size:12.5px; }
+.card { background:var(--panel); border:1px solid var(--line); border-radius:10px; padding:16px 18px; margin-bottom:14px; scroll-margin-top:200px; }
+.card h3 { margin:0; font-size:19px; }
 .card .sub { color:var(--muted); font-size:12.5px; margin-bottom:6px; }
-.card h4 { margin:14px 0 4px; font-size:13px; color:var(--accent); }
+.card h4 { margin:16px 0 4px; font-size:13px; color:var(--accent); }
 .card p { margin:4px 0; }
 .card p.summary { font-weight:600; }
 .tags span { display:inline-block; background:var(--tag); border-radius:999px; padding:1px 9px; margin:0 5px 4px 0; font-size:12px; }
@@ -33,19 +34,58 @@ td[title] { cursor:help; }
 details { margin-top:10px; }
 summary { cursor:pointer; color:var(--muted); font-size:12.5px; }
 .hidden { display:none; }
+@media (max-width: 760px) {
+  aside { position:static; width:auto; max-height:45vh; border-right:none; border-bottom:1px solid var(--line); }
+  main { margin-left:0; padding:14px 12px 50px; }
+  td.value { white-space:normal; }
+}
 </style></head>
 <body>
-<header><input id="filter" type="search" placeholder="카드 검색…"><h1>Project Xpace &#54632;&#49440; &#46020;&#44048;</h1><span class="stamp">&#45236;&#48372;&#45240; &#49884;&#44033; 2026-11-11 14:36  &#183;  Unity &#47700;&#45684; Xpace &#8250; Balance &#8250; Export Ship Codex (HTML)&#47196; &#45796;&#49884; &#47564;&#46317;&#45768;&#45796;.</span>
+<aside><h1>Project Xpace &#54632;&#49440; &#46020;&#44048;</h1><div class="stamp">&#45236;&#48372;&#45240; &#49884;&#44033; 2026-11-11 14:54</div><input id="filter" type="search" placeholder="목록 검색…">
 <nav>
-<div><b>&#54540;&#47112;&#51060;&#50612; &#54632;&#49440;</b><a href="#player-nave-espacial">FRIGATE SR4</a><a href="#player-nave-espacial-classic">FIGHTER MG4</a><a href="#player-bomber-rk3">BOMBER RK3</a><a href="#player-fighter-zr2">FIGHTER ZR2</a></div>
-<div><b>&#54540;&#47112;&#51060;&#50612; &#44277;&#50857; &#49444;&#51221;</b><a href="#shared-laser">&#47112;&#51060;&#51200;</a><a href="#shared-vulcan">&#48268;&#52968;</a><a href="#shared-scatter">&#49328;&#53444;</a><a href="#shared-missile">&#50976;&#46020; &#48120;&#49324;&#51068;</a><a href="#shared-beam">&#51648;&#49549; &#48724;</a><a href="#shared-plasma">&#54540;&#46972;&#51592;&#47560; &#52880;&#45436;</a><a href="#shared-railgun">&#47112;&#51068;&#44148;</a><a href="#shared-chain">&#50672;&#49604; &#48264;&#44060;</a><a href="#shared-turret">&#54252;&#53457; &#51204;&#53804;</a><a href="#shared-flight">&#48708;&#54665;</a><a href="#shared-health">&#52404;&#47141;&#183;&#54588;&#44201;</a><a href="#shared-booster">&#48512;&#49828;&#53552;</a></div>
-<div><b>&#51201; &#54632;&#49440;</b><a href="#enemy-Fighter">&#51204;&#53804;&#44592;</a><a href="#enemy-Dropship">&#46300;&#47213;&#49901;</a><a href="#enemy-Corvette">&#53076;&#47476;&#48307;</a><a href="#enemy-Battleship">&#51204;&#54632;</a><a href="#enemy-Sparrow">&#49828;&#54056;&#47196;&#50864;</a><a href="#enemy-Interceptor">&#50836;&#44201;&#44592;</a><a href="#enemy-Drone">&#51088;&#54253; &#46300;&#47200;</a><a href="#enemy-Diplomat">&#50808;&#44368;&#49440;</a><a href="#enemy-Destroyer">&#44396;&#52629;&#54632;</a><a href="#enemy-Dreadnought">&#46300;&#47112;&#46300;&#45432;&#53944;</a></div>
-<div><b>&#51201; &#44277;&#50857; &#49444;&#51221;</b><a href="#enemy-settings">&#51201; &#54632;&#49440; &#49444;&#51221;</a><a href="#enemy-basic-attacks">&#51201; &#44592;&#48376; &#44277;&#44201;&#183;&#48372;&#54840;&#47561;</a><a href="#enemy-interceptors">&#50836;&#44201;&#44592;</a><a href="#enemy-drones">&#51088;&#54253; &#46300;&#47200;</a><a href="#enemy-sizes">&#49440;&#52404; &#53356;&#44592;</a></div>
-</nav></header>
+<div class="group"><h2>&#54540;&#47112;&#51060;&#50612; &#54632;&#49440;</h2><ul>
+<li><a href="#player-nave-espacial">FRIGATE SR4</a></li>
+<li><a href="#player-nave-espacial-classic">FIGHTER MG4</a></li>
+<li><a href="#player-bomber-rk3">BOMBER RK3</a></li>
+<li><a href="#player-fighter-zr2">FIGHTER ZR2</a></li>
+</ul></div>
+<div class="group"><h2>&#54540;&#47112;&#51060;&#50612; &#44277;&#50857; &#49444;&#51221;</h2><ul>
+<li><a href="#shared-laser">&#47112;&#51060;&#51200;</a></li>
+<li><a href="#shared-vulcan">&#48268;&#52968;</a></li>
+<li><a href="#shared-scatter">&#49328;&#53444;</a></li>
+<li><a href="#shared-missile">&#50976;&#46020; &#48120;&#49324;&#51068;</a></li>
+<li><a href="#shared-beam">&#51648;&#49549; &#48724;</a></li>
+<li><a href="#shared-plasma">&#54540;&#46972;&#51592;&#47560; &#52880;&#45436;</a></li>
+<li><a href="#shared-railgun">&#47112;&#51068;&#44148;</a></li>
+<li><a href="#shared-chain">&#50672;&#49604; &#48264;&#44060;</a></li>
+<li><a href="#shared-turret">&#54252;&#53457; &#51204;&#53804;</a></li>
+<li><a href="#shared-flight">&#48708;&#54665;</a></li>
+<li><a href="#shared-health">&#52404;&#47141;&#183;&#54588;&#44201;</a></li>
+<li><a href="#shared-booster">&#48512;&#49828;&#53552;</a></li>
+</ul></div>
+<div class="group"><h2>&#51201; &#54632;&#49440;</h2><ul>
+<li><a href="#enemy-Fighter">&#51204;&#53804;&#44592;</a></li>
+<li><a href="#enemy-Dropship">&#46300;&#47213;&#49901;</a></li>
+<li><a href="#enemy-Corvette">&#53076;&#47476;&#48307;</a></li>
+<li><a href="#enemy-Battleship">&#51204;&#54632;</a></li>
+<li><a href="#enemy-Sparrow">&#49828;&#54056;&#47196;&#50864;</a></li>
+<li><a href="#enemy-Interceptor">&#50836;&#44201;&#44592;</a></li>
+<li><a href="#enemy-Drone">&#51088;&#54253; &#46300;&#47200;</a></li>
+<li><a href="#enemy-Diplomat">&#50808;&#44368;&#49440;</a></li>
+<li><a href="#enemy-Destroyer">&#44396;&#52629;&#54632;</a></li>
+<li><a href="#enemy-Dreadnought">&#46300;&#47112;&#46300;&#45432;&#53944;</a></li>
+</ul></div>
+<div class="group"><h2>&#51201; &#44277;&#50857; &#49444;&#51221;</h2><ul>
+<li><a href="#enemy-settings">&#51201; &#54632;&#49440; &#49444;&#51221;</a></li>
+<li><a href="#enemy-basic-attacks">&#51201; &#44592;&#48376; &#44277;&#44201;&#183;&#48372;&#54840;&#47561;</a></li>
+<li><a href="#enemy-interceptors">&#50836;&#44201;&#44592;</a></li>
+<li><a href="#enemy-drones">&#51088;&#54253; &#46300;&#47200;</a></li>
+<li><a href="#enemy-sizes">&#49440;&#52404; &#53356;&#44592;</a></li>
+</ul></div>
+<div id="empty" class="empty hidden">검색 결과가 없습니다.</div></nav></aside>
 <main>
 <section><h2 id="player-ships">&#54540;&#47112;&#51060;&#50612; &#54632;&#49440;</h2>
 <p class="note">&#50836;&#50557; &#49688;&#52824;&#45716; &#50689;&#44396; &#48372;&#45320;&#49828;&#183;&#48512;&#50948; &#49552;&#49345;&#183;&#47749;&#51473;&#47456;&#51012; &#48768; &#52628;&#51221;&#52824;&#51077;&#45768;&#45796;. &#51204;&#50857; &#49444;&#51221;&#51060; &#50630;&#45716; &#47924;&#44592;&#45716; &#44277;&#50857; &#49444;&#51221;&#51012; &#50433;&#45768;&#45796;.</p>
-<div class="cards">
 <article class="card" id="player-nave-espacial"><h3>FRIGATE SR4</h3>
 <div class="sub">nave-espacial  &#183;  Player/Ships/nave-espacial</div>
 <div class="tags"><span>&#44512;&#54805;&#54805;</span><span>&#44592;&#48376; &#44277;&#44201;: &#47112;&#51060;&#51200;</span></div>
@@ -295,10 +335,9 @@ summary { cursor:pointer; color:var(--muted); font-size:12.5px; }
 </table>
 <p>&#48176;&#52824; &#50640;&#49483;: SF_Fighter_ZR2  &#183;  &#50948;&#52824;&#45716; &#49440;&#52404; &#44592;&#51456; &#51340;&#54364;&#51077;&#45768;&#45796;.</p>
 </article>
-</div></section>
+</section>
 <section><h2 id="player-shared">&#54540;&#47112;&#51060;&#50612; &#44277;&#50857; &#49444;&#51221;</h2>
 <p class="note">&#54632;&#49440;&#51060; &#51204;&#50857; &#49444;&#51221;&#51012; &#44054;&#51648; &#50506;&#51004;&#47732; &#50416;&#45716; &#44592;&#51456;&#44050;&#51077;&#45768;&#45796;. &#54637;&#47785;&#50640; &#54252;&#51064;&#53552;&#47484; &#50732;&#47532;&#47732; &#49444;&#47749;&#51060; &#48372;&#51077;&#45768;&#45796;.</p>
-<div class="cards">
 <article class="card" id="shared-laser"><h3>&#47112;&#51060;&#51200;</h3>
 <div class="sub">Assets/Settings/Gameplay/Spaceship/LaserWeaponSettings.asset</div>
 <table>
@@ -481,10 +520,9 @@ summary { cursor:pointer; color:var(--muted); font-size:12.5px; }
 <tr><td>Flame Emission Multiplier</td><td class="value">1.5</td></tr>
 </table>
 </article>
-</div></section>
+</section>
 <section><h2 id="enemy-ships">&#51201; &#54632;&#49440;</h2>
 <p class="note">&#51201; &#49688;&#52824;&#45716; &#49440;&#52404;&#48324; &#50640;&#49483;&#51060; &#50500;&#45768;&#46972; &#44277;&#53685; &#51201; &#49444;&#51221;&#50640;&#49436; &#49440;&#52404; &#44508;&#52825;&#51004;&#47196; &#44228;&#49328;&#46121;&#45768;&#45796;. &#44592;&#48152; &#53364;&#47000;&#49828;&#44032; &#44057;&#51008; &#49440;&#52404;&#45716; HP&#183;&#44592;&#46041; &#44050;&#51012; &#54632;&#44760; &#50433;&#45768;&#45796;.</p>
-<div class="cards">
 <article class="card" id="enemy-Fighter"><h3>&#51204;&#53804;&#44592;</h3>
 <div class="sub">Fighter  &#183;  Enemies/Ships/Fighter</div>
 <div class="tags"><span>&#49440;&#54924; &#49324;&#44201;</span></div>
@@ -812,10 +850,9 @@ summary { cursor:pointer; color:var(--muted); font-size:12.5px; }
 <tr><td>&#51204;&#51109; &#51204;&#52404; &#52572;&#45824;</td><td class="value">6</td></tr>
 </table>
 </article>
-</div></section>
+</section>
 <section><h2 id="enemy-shared">&#51201; &#44277;&#50857; &#49444;&#51221;</h2>
 <p class="note">&#47784;&#46304; &#51201; &#49440;&#52404;&#51032; &#44508;&#52825;&#51060; &#45208;&#50724;&#45716; &#50896;&#48376; &#44050;&#51077;&#45768;&#45796;. &#54637;&#47785;&#50640; &#54252;&#51064;&#53552;&#47484; &#50732;&#47532;&#47732; &#49444;&#47749;&#51060; &#48372;&#51077;&#45768;&#45796;.</p>
-<div class="cards">
 <article class="card" id="enemy-settings"><h3>&#51201; &#54632;&#49440; &#49444;&#51221;</h3>
 <div class="sub">Assets/Settings/Gameplay/Enemies/EnemyShipSettings.asset</div>
 <table>
@@ -1025,16 +1062,41 @@ summary { cursor:pointer; color:var(--muted); font-size:12.5px; }
 <tr><td>Diplomat Length Ratio</td><td class="value">3.6</td></tr>
 </table>
 </article>
-</div></section>
+</section>
 </main>
 <script>
+const links = [...document.querySelectorAll('nav a')];
+const cards = [...document.querySelectorAll('.card')];
+const sections = [...document.querySelectorAll('main section')];
 const filter = document.getElementById('filter');
+const empty = document.getElementById('empty');
+
+function select(id) {
+  const card = document.getElementById(id) || cards[0];
+  cards.forEach(c => c.classList.toggle('hidden', c !== card));
+  sections.forEach(s => s.classList.toggle('hidden', !s.contains(card)));
+  links.forEach(a => a.classList.toggle('selected', a.hash === '#' + card.id));
+  window.scrollTo(0, 0);
+}
+
+function selectFromAddress() {
+  select(decodeURIComponent(location.hash.slice(1)));
+}
+
 filter.addEventListener('input', () => {
   const words = filter.value.trim().toLowerCase().split(/\s+/).filter(w => w);
-  document.querySelectorAll('.card').forEach(card => {
-    const text = card.textContent.toLowerCase();
-    card.classList.toggle('hidden', !words.every(w => text.includes(w)));
+  let shown = 0;
+  links.forEach(a => {
+    const text = document.getElementById(a.hash.slice(1)).textContent.toLowerCase();
+    const match = words.every(w => text.includes(w));
+    a.parentElement.classList.toggle('hidden', !match);
+    shown += match ? 1 : 0;
   });
+  document.querySelectorAll('nav .group').forEach(g => g.classList.toggle('hidden', !g.querySelector('li:not(.hidden)')));
+  empty.classList.toggle('hidden', shown > 0);
 });
+
+window.addEventListener('hashchange', selectFromAddress);
+selectFromAddress();
 </script>
 </body></html>
