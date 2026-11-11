@@ -1,0 +1,1040 @@
+<!DOCTYPE html>
+<html lang="ko"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>Project Xpace &#54632;&#49440; &#46020;&#44048;</title><style>
+:root { --bg:#0e1117; --panel:#161b24; --line:#283040; --text:#dfe6f1; --muted:#8b98ad; --accent:#6cc6ff; --tag:#1f2a3a; }
+@media (prefers-color-scheme: light) {
+  :root { --bg:#f4f6fa; --panel:#ffffff; --line:#d9dfe9; --text:#1c2430; --muted:#5f6b7d; --accent:#0b6fbf; --tag:#e8eef7; }
+}
+* { box-sizing:border-box; }
+body { margin:0; background:var(--bg); color:var(--text); font:14px/1.55 -apple-system,'Apple SD Gothic Neo','Malgun Gothic',sans-serif; }
+header { position:sticky; top:0; z-index:2; background:var(--panel); border-bottom:1px solid var(--line); padding:10px 20px; }
+header h1 { margin:0; font-size:17px; display:inline-block; margin-right:14px; }
+header .stamp { color:var(--muted); font-size:12px; }
+header input { float:right; width:220px; padding:5px 9px; border:1px solid var(--line); border-radius:6px; background:var(--bg); color:var(--text); }
+nav { margin-top:8px; font-size:12.5px; line-height:1.9; }
+nav b { color:var(--muted); margin-right:6px; }
+nav a { color:var(--accent); text-decoration:none; margin-right:10px; white-space:nowrap; }
+nav a:hover { text-decoration:underline; }
+main { padding:8px 20px 60px; max-width:1500px; margin:0 auto; }
+section > h2 { margin:28px 0 2px; font-size:19px; scroll-margin-top:130px; }
+section > p.note { margin:0 0 10px; color:var(--muted); }
+.cards { display:grid; grid-template-columns:repeat(auto-fill,minmax(430px,1fr)); gap:14px; align-items:start; }
+.card { background:var(--panel); border:1px solid var(--line); border-radius:10px; padding:14px 16px; scroll-margin-top:130px; }
+.card h3 { margin:0; font-size:16px; }
+.card .sub { color:var(--muted); font-size:12.5px; margin-bottom:6px; }
+.card h4 { margin:14px 0 4px; font-size:13px; color:var(--accent); }
+.card p { margin:4px 0; }
+.card p.summary { font-weight:600; }
+.tags span { display:inline-block; background:var(--tag); border-radius:999px; padding:1px 9px; margin:0 5px 4px 0; font-size:12px; }
+table { width:100%; border-collapse:collapse; font-size:13px; }
+th, td { text-align:left; padding:3px 6px; border-bottom:1px solid var(--line); vertical-align:top; }
+th { color:var(--muted); font-weight:600; }
+td.value { text-align:right; font-variant-numeric:tabular-nums; white-space:nowrap; }
+td[title] { cursor:help; }
+details { margin-top:10px; }
+summary { cursor:pointer; color:var(--muted); font-size:12.5px; }
+.hidden { display:none; }
+</style></head>
+<body>
+<header><input id="filter" type="search" placeholder="카드 검색…"><h1>Project Xpace &#54632;&#49440; &#46020;&#44048;</h1><span class="stamp">&#45236;&#48372;&#45240; &#49884;&#44033; 2026-11-11 14:36  &#183;  Unity &#47700;&#45684; Xpace &#8250; Balance &#8250; Export Ship Codex (HTML)&#47196; &#45796;&#49884; &#47564;&#46317;&#45768;&#45796;.</span>
+<nav>
+<div><b>&#54540;&#47112;&#51060;&#50612; &#54632;&#49440;</b><a href="#player-nave-espacial">FRIGATE SR4</a><a href="#player-nave-espacial-classic">FIGHTER MG4</a><a href="#player-bomber-rk3">BOMBER RK3</a><a href="#player-fighter-zr2">FIGHTER ZR2</a></div>
+<div><b>&#54540;&#47112;&#51060;&#50612; &#44277;&#50857; &#49444;&#51221;</b><a href="#shared-laser">&#47112;&#51060;&#51200;</a><a href="#shared-vulcan">&#48268;&#52968;</a><a href="#shared-scatter">&#49328;&#53444;</a><a href="#shared-missile">&#50976;&#46020; &#48120;&#49324;&#51068;</a><a href="#shared-beam">&#51648;&#49549; &#48724;</a><a href="#shared-plasma">&#54540;&#46972;&#51592;&#47560; &#52880;&#45436;</a><a href="#shared-railgun">&#47112;&#51068;&#44148;</a><a href="#shared-chain">&#50672;&#49604; &#48264;&#44060;</a><a href="#shared-turret">&#54252;&#53457; &#51204;&#53804;</a><a href="#shared-flight">&#48708;&#54665;</a><a href="#shared-health">&#52404;&#47141;&#183;&#54588;&#44201;</a><a href="#shared-booster">&#48512;&#49828;&#53552;</a></div>
+<div><b>&#51201; &#54632;&#49440;</b><a href="#enemy-Fighter">&#51204;&#53804;&#44592;</a><a href="#enemy-Dropship">&#46300;&#47213;&#49901;</a><a href="#enemy-Corvette">&#53076;&#47476;&#48307;</a><a href="#enemy-Battleship">&#51204;&#54632;</a><a href="#enemy-Sparrow">&#49828;&#54056;&#47196;&#50864;</a><a href="#enemy-Interceptor">&#50836;&#44201;&#44592;</a><a href="#enemy-Drone">&#51088;&#54253; &#46300;&#47200;</a><a href="#enemy-Diplomat">&#50808;&#44368;&#49440;</a><a href="#enemy-Destroyer">&#44396;&#52629;&#54632;</a><a href="#enemy-Dreadnought">&#46300;&#47112;&#46300;&#45432;&#53944;</a></div>
+<div><b>&#51201; &#44277;&#50857; &#49444;&#51221;</b><a href="#enemy-settings">&#51201; &#54632;&#49440; &#49444;&#51221;</a><a href="#enemy-basic-attacks">&#51201; &#44592;&#48376; &#44277;&#44201;&#183;&#48372;&#54840;&#47561;</a><a href="#enemy-interceptors">&#50836;&#44201;&#44592;</a><a href="#enemy-drones">&#51088;&#54253; &#46300;&#47200;</a><a href="#enemy-sizes">&#49440;&#52404; &#53356;&#44592;</a></div>
+</nav></header>
+<main>
+<section><h2 id="player-ships">&#54540;&#47112;&#51060;&#50612; &#54632;&#49440;</h2>
+<p class="note">&#50836;&#50557; &#49688;&#52824;&#45716; &#50689;&#44396; &#48372;&#45320;&#49828;&#183;&#48512;&#50948; &#49552;&#49345;&#183;&#47749;&#51473;&#47456;&#51012; &#48768; &#52628;&#51221;&#52824;&#51077;&#45768;&#45796;. &#51204;&#50857; &#49444;&#51221;&#51060; &#50630;&#45716; &#47924;&#44592;&#45716; &#44277;&#50857; &#49444;&#51221;&#51012; &#50433;&#45768;&#45796;.</p>
+<div class="cards">
+<article class="card" id="player-nave-espacial"><h3>FRIGATE SR4</h3>
+<div class="sub">nave-espacial  &#183;  Player/Ships/nave-espacial</div>
+<div class="tags"><span>&#44512;&#54805;&#54805;</span><span>&#44592;&#48376; &#44277;&#44201;: &#47112;&#51060;&#51200;</span></div>
+<p class="summary">&#52509; HP 100  &#183;  &#49549;&#46020; 4  &#183;  &#48512;&#49828;&#53552; 4s</p>
+<h4>&#49828;&#53487;</h4>
+<table>
+<tr><td>&#49440;&#52404; HP</td><td class="value">40</td></tr>
+<tr><td>&#45216;&#44060; HP (&#51340;&#183;&#50864; &#44033;&#44033;)</td><td class="value">20</td></tr>
+<tr><td>&#50644;&#51652; HP</td><td class="value">20</td></tr>
+<tr><td>&#52509; HP</td><td class="value">100</td></tr>
+<tr><td>&#51060;&#46041; &#49549;&#46020;</td><td class="value">4 (+0%)</td></tr>
+<tr><td>&#48512;&#49828;&#53552; &#51648;&#49549;</td><td class="value">4&#52488; (+0%)</td></tr>
+</table>
+<h4>&#51312;&#51456;&#183;&#44592;&#46041;</h4>
+<table>
+<tr><td>&#44592;&#48376; &#44277;&#44201;&#51012; &#44592;&#49688; &#48169;&#54693;&#51004;&#47196; &#48156;&#49324;</td><td class="value">&#50500;&#45768;&#50724;</td></tr>
+<tr><td>&#44592;&#48376; &#44277;&#44201;&#51060; &#49440;&#52404;&#47484; &#54364;&#51201;&#51004;&#47196; &#46028;&#47548;</td><td class="value">&#50500;&#45768;&#50724;</td></tr>
+<tr><td>&#51312;&#51456; &#49440;&#54924; &#48176;&#50984;</td><td class="value">&#215;1</td></tr>
+<tr><td>&#51312;&#51456; &#49440;&#54924; &#49884; &#44592;&#50872;&#51648; &#50506;&#51020;</td><td class="value">&#50500;&#45768;&#50724;</td></tr>
+<tr><td>&#52769;&#47732; &#48516;&#49324; &#45432;&#51600;</td><td class="value">&#50500;&#45768;&#50724;</td></tr>
+<tr><td>&#44592;&#49688; &#49324;&#44201; &#54728;&#50857; &#44033;&#46020;</td><td class="value">&#51228;&#54620; &#50630;&#51020;</td></tr>
+</table>
+<h4>&#44592;&#48376; &#44277;&#44201; &#8212; &#47112;&#51060;&#51200; (&#44277;&#50857; &#49444;&#51221;)</h4>
+<p class="summary">DPS 6.7  &#183;  &#51068;&#51228;&#49324;&#44201; 2&#48156; &#215; 1  &#183;  &#49324;&#44144;&#47532; 24</p>
+<details><summary>&#51204;&#52404; &#49444;&#51221;&#44050; &#183; LaserWeaponSettings</summary>
+<table>
+<tr><td>Automatic Fire</td><td class="value">&#50696;</td></tr>
+<tr><td>Automatic Attack Range</td><td class="value">24</td></tr>
+<tr><td>Automatic Attack Angle</td><td class="value">70</td></tr>
+<tr><td title="Aim with the aim stick or mouse and fire while the stick is tilted or the button held.">Manual Aim</td><td class="value">&#50696;</td></tr>
+<tr><td title="While firing, swing the nose to the aim and fire from the nose; the ship still travels where the move stick sends it. Off keeps the hull on its course and fires from a ring around it, turret style.">Aim Turns Hull</td><td class="value">&#50500;&#45768;&#50724;</td></tr>
+<tr><td title="With Aim Turns Hull: full width of the cone around the nose the aim must be inside before shots leave.">Aim Nose Fire Cone</td><td class="value">60</td></tr>
+<tr><td>Aim Dead Zone</td><td class="value">0.2</td></tr>
+<tr><td title="Degrees off the aim within which a shot is pulled onto an enemy where it is now (no lead). 0 is fully manual.">Aim Snap Angle</td><td class="value">6</td></tr>
+<tr><td title="Full width of the arc around the nose the guns can aim through. 360 aims all round.">Aim Fire Arc</td><td class="value">360</td></tr>
+<tr><td title="On desktop the guns follow the mouse cursor while the mouse is in use.">Mouse Aim</td><td class="value">&#50696;</td></tr>
+<tr><td title="Degrees per second a mounted turret part swings towards the aim.">Turret Turn Speed</td><td class="value">720</td></tr>
+<tr><td title="Degrees off the aim within which a mounted turret part may fire.">Turret Fire Angle</td><td class="value">15</td></tr>
+<tr><td>Aiming Mode</td><td class="value">Ship Forward</td></tr>
+<tr><td>Fire Interval</td><td class="value">0.3</td></tr>
+<tr><td>Projectile Speed</td><td class="value">34</td></tr>
+<tr><td>Projectile Lifetime</td><td class="value">2.2</td></tr>
+<tr><td>Pool Capacity</td><td class="value">64</td></tr>
+<tr><td title="Damage of each laser bolt. 0 uses the mining settings&#39; laser damage, shared with asteroid mining.">Damage</td><td class="value">0</td></tr>
+<tr><td title="Shots fired together on each side of the muzzle. 0 fires one centered shot.">Shots Per Side</td><td class="value">1</td></tr>
+<tr><td title="World units from the line of fire to the middle of each side&#39;s shots.">Side Offset</td><td class="value">0.6</td></tr>
+<tr><td title="World units between neighbouring shots on one side.">Shot Spacing</td><td class="value">0.22</td></tr>
+</table>
+</details>
+<h4>&#44592;&#48376; &#44277;&#44201; &#50629;&#44536;&#47112;&#51060;&#46300;</h4>
+<table><tr><th>&#45733;&#47141;&#52824;</th><th>&#45800;&#44228;&#45817; &#49345;&#49849;</th><th>&#52572;&#45824; &#45800;&#44228;</th><th>&#45800;&#44228;&#48324; &#48708;&#50857;</th></tr>
+<tr><td>&#54868;&#47141;</td><td>+10%</td><td>3</td><td>150 &#8594; 300 &#8594; 500</td></tr>
+<tr><td>&#50672;&#49324;</td><td>+8%</td><td>3</td><td>150 &#8594; 300 &#8594; 500</td></tr>
+</table>
+<h4>&#53945;&#49688; &#44277;&#44201;</h4>
+<table><tr><th>&#47924;&#44592;</th><th>&#44032;&#44201;</th><th>&#49444;&#51221;</th><th>&#52628;&#51221;&#52824;</th></tr>
+<tr><td>&#50976;&#46020; &#48120;&#49324;&#51068;</td><td>&#44592;&#48376; &#48372;&#50976;</td><td>&#44277;&#50857; &#49444;&#51221;</td><td>&#54924;&#45817; 8 (2&#48156;)  &#183;  &#52488;&#45817; 2.67  &#183;  &#53224;&#45796;&#50868; 3s</td></tr>
+<tr><td>&#51648;&#49549; &#48724;</td><td>800</td><td>&#44277;&#50857; &#49444;&#51221;</td><td>&#54924;&#45817; 28 (14&#54001;)  &#183;  &#52488;&#45817; 3.11  &#183;  &#49324;&#51060;&#53364; 9s</td></tr>
+<tr><td>&#54540;&#46972;&#51592;&#47560; &#52880;&#45436;</td><td>900</td><td>&#44277;&#50857; &#49444;&#51221;</td><td>&#51473;&#49900; 12 / &#50808;&#44285; 6  &#183;  &#52488;&#45817; 2.4  &#183;  &#48152;&#44221; 4</td></tr>
+<tr><td>&#47112;&#51068;&#44148;</td><td>1,000</td><td>&#44277;&#50857; &#49444;&#51221;</td><td>&#45800;&#51068; 16  &#183;  &#52572;&#45824; &#44288;&#53685; &#54633;&#44228; 37 (3&#52377;)  &#183;  &#52488;&#45817; 4</td></tr>
+<tr><td>&#50672;&#49604; &#48264;&#44060;</td><td>1,100</td><td>&#44277;&#50857; &#49444;&#51221;</td><td>&#52395; &#53440;&#44201; 8  &#183;  &#52572;&#45824; &#50672;&#49604; &#54633;&#44228; 21.9 (4&#54924;)  &#183;  &#52488;&#45817; 1.33</td></tr>
+</table>
+<h4>&#54252;&#53457;&#183;&#51452;&#54252; &#48176;&#52824;</h4>
+<table><tr><th>&#51333;&#47448;</th><th>&#54028;&#53944;</th><th>&#50948;&#52824; (x, y, z)</th><th>&#53356;&#44592;</th></tr>
+<tr><td>&#51452; &#54252;&#53457;</td><td>SF_Frigate_SR4_Turret_Front</td><td>0, 0.502, 0.337</td><td>&#215;1</td></tr>
+<tr><td>&#52628;&#44032; &#54252;&#53457; 1</td><td>SF_Frigate_SR4_Turret_Rear</td><td>0, 0.757, -0.317</td><td>&#215;1</td></tr>
+</table>
+<p>&#48176;&#52824; &#50640;&#49483;: SF_Frigate_SR4  &#183;  &#50948;&#52824;&#45716; &#49440;&#52404; &#44592;&#51456; &#51340;&#54364;&#51077;&#45768;&#45796;.</p>
+</article>
+<article class="card" id="player-nave-espacial-classic"><h3>FIGHTER MG4</h3>
+<div class="sub">nave-espacial-classic  &#183;  Player/Ships/nave-espacial-classic</div>
+<div class="tags"><span>&#46028;&#44201;&#54805;</span><span>&#44592;&#48376; &#44277;&#44201;: &#48268;&#52968;</span></div>
+<p class="summary">&#52509; HP 111  &#183;  &#49549;&#46020; 4  &#183;  &#48512;&#49828;&#53552; 4s</p>
+<h4>&#49828;&#53487;</h4>
+<table>
+<tr><td>&#49440;&#52404; HP</td><td class="value">45</td></tr>
+<tr><td>&#45216;&#44060; HP (&#51340;&#183;&#50864; &#44033;&#44033;)</td><td class="value">22</td></tr>
+<tr><td>&#50644;&#51652; HP</td><td class="value">22</td></tr>
+<tr><td>&#52509; HP</td><td class="value">111</td></tr>
+<tr><td>&#51060;&#46041; &#49549;&#46020;</td><td class="value">4 (+0%)</td></tr>
+<tr><td>&#48512;&#49828;&#53552; &#51648;&#49549;</td><td class="value">4&#52488; (+0%)</td></tr>
+</table>
+<h4>&#51312;&#51456;&#183;&#44592;&#46041;</h4>
+<table>
+<tr><td>&#44592;&#48376; &#44277;&#44201;&#51012; &#44592;&#49688; &#48169;&#54693;&#51004;&#47196; &#48156;&#49324;</td><td class="value">&#50696;</td></tr>
+<tr><td>&#44592;&#48376; &#44277;&#44201;&#51060; &#49440;&#52404;&#47484; &#54364;&#51201;&#51004;&#47196; &#46028;&#47548;</td><td class="value">&#50696;</td></tr>
+<tr><td>&#51312;&#51456; &#49440;&#54924; &#48176;&#50984;</td><td class="value">&#215;1.3</td></tr>
+<tr><td>&#51312;&#51456; &#49440;&#54924; &#49884; &#44592;&#50872;&#51648; &#50506;&#51020;</td><td class="value">&#50696;</td></tr>
+<tr><td>&#52769;&#47732; &#48516;&#49324; &#45432;&#51600;</td><td class="value">&#50696;</td></tr>
+<tr><td>&#44592;&#49688; &#49324;&#44201; &#54728;&#50857; &#44033;&#46020;</td><td class="value">90&#176;</td></tr>
+</table>
+<h4>&#44592;&#48376; &#44277;&#44201; &#8212; &#48268;&#52968; (&#51204;&#50857; &#49444;&#51221;)</h4>
+<p class="summary">DPS 10  &#183;  &#48156;&#45817; 2  &#183;  &#49324;&#44144;&#47532; 22</p>
+<details><summary>&#51204;&#52404; &#49444;&#51221;&#44050; &#183; nave-espacial-classic_VulcanWeaponSettings</summary>
+<table>
+<tr><td>Fire Interval</td><td class="value">0.2</td></tr>
+<tr><td>Projectile Speed</td><td class="value">42</td></tr>
+<tr><td>Projectile Lifetime</td><td class="value">0.75</td></tr>
+<tr><td>Damage</td><td class="value">2</td></tr>
+<tr><td>Pool Capacity</td><td class="value">32</td></tr>
+<tr><td>Attack Range</td><td class="value">22</td></tr>
+<tr><td>Attack Angle</td><td class="value">70</td></tr>
+<tr><td>Spread Angle</td><td class="value">1.5</td></tr>
+<tr><td title="Shots fired together on each side of the line of fire; 0 fires one centred shot. On a hull with a pair of primary guns (the MG4&#39;s wing guns) 1 fires one shot from each gun at once, and the guns set the spacing.">Shots Per Side</td><td class="value">1</td></tr>
+<tr><td title="Distance from the line of fire to each side&#39;s shots, where no guns set it.">Side Offset</td><td class="value">0.3</td></tr>
+<tr><td title="Distance between neighbouring shots on the same side.">Shot Spacing</td><td class="value">0.2</td></tr>
+</table>
+</details>
+<h4>&#44592;&#48376; &#44277;&#44201; &#50629;&#44536;&#47112;&#51060;&#46300;</h4>
+<table><tr><th>&#45733;&#47141;&#52824;</th><th>&#45800;&#44228;&#45817; &#49345;&#49849;</th><th>&#52572;&#45824; &#45800;&#44228;</th><th>&#45800;&#44228;&#48324; &#48708;&#50857;</th></tr>
+<tr><td>&#54868;&#47141;</td><td>+10%</td><td>3</td><td>150 &#8594; 300 &#8594; 500</td></tr>
+<tr><td>&#50672;&#49324;</td><td>+8%</td><td>3</td><td>150 &#8594; 300 &#8594; 500</td></tr>
+</table>
+<h4>&#53945;&#49688; &#44277;&#44201;</h4>
+<table><tr><th>&#47924;&#44592;</th><th>&#44032;&#44201;</th><th>&#49444;&#51221;</th><th>&#52628;&#51221;&#52824;</th></tr>
+<tr><td>&#50976;&#46020; &#48120;&#49324;&#51068;</td><td>&#44592;&#48376; &#48372;&#50976;</td><td>&#44277;&#50857; &#49444;&#51221;</td><td>&#54924;&#45817; 8 (2&#48156;)  &#183;  &#52488;&#45817; 2.67  &#183;  &#53224;&#45796;&#50868; 3s</td></tr>
+<tr><td>&#51648;&#49549; &#48724;</td><td>800</td><td>&#44277;&#50857; &#49444;&#51221;</td><td>&#54924;&#45817; 28 (14&#54001;)  &#183;  &#52488;&#45817; 3.11  &#183;  &#49324;&#51060;&#53364; 9s</td></tr>
+<tr><td>&#54540;&#46972;&#51592;&#47560; &#52880;&#45436;</td><td>900</td><td>&#44277;&#50857; &#49444;&#51221;</td><td>&#51473;&#49900; 12 / &#50808;&#44285; 6  &#183;  &#52488;&#45817; 2.4  &#183;  &#48152;&#44221; 4</td></tr>
+<tr><td>&#47112;&#51068;&#44148;</td><td>1,000</td><td>&#44277;&#50857; &#49444;&#51221;</td><td>&#45800;&#51068; 16  &#183;  &#52572;&#45824; &#44288;&#53685; &#54633;&#44228; 37 (3&#52377;)  &#183;  &#52488;&#45817; 4</td></tr>
+<tr><td>&#50672;&#49604; &#48264;&#44060;</td><td>1,100</td><td>&#44277;&#50857; &#49444;&#51221;</td><td>&#52395; &#53440;&#44201; 8  &#183;  &#52572;&#45824; &#50672;&#49604; &#54633;&#44228; 21.9 (4&#54924;)  &#183;  &#52488;&#45817; 1.33</td></tr>
+</table>
+<h4>&#54252;&#53457;&#183;&#51452;&#54252; &#48176;&#52824;</h4>
+<table><tr><th>&#51333;&#47448;</th><th>&#54028;&#53944;</th><th>&#50948;&#52824; (x, y, z)</th><th>&#53356;&#44592;</th></tr>
+<tr><td>&#51452; &#54252;&#53457;</td><td>&#50630;&#51020;</td><td>0, 0.522, -0.3</td><td>&#215;0.48</td></tr>
+<tr><td>&#51452;&#54252; 1</td><td>&#49440;&#52404; &#44256;&#51221;</td><td>-0.31, -0.8, 0.95</td><td>&#8212;</td></tr>
+<tr><td>&#51452;&#54252; 2</td><td>&#49440;&#52404; &#44256;&#51221;</td><td>0.31, -0.8, 0.95</td><td>&#8212;</td></tr>
+</table>
+<p>&#48176;&#52824; &#50640;&#49483;: SF_Fighter_MG4  &#183;  &#50948;&#52824;&#45716; &#49440;&#52404; &#44592;&#51456; &#51340;&#54364;&#51077;&#45768;&#45796;.</p>
+</article>
+<article class="card" id="player-bomber-rk3"><h3>BOMBER RK3</h3>
+<div class="sub">bomber-rk3  &#183;  Player/Ships/bomber-rk3</div>
+<div class="tags"><span>&#51473;&#54253;&#44201;&#54805;</span><span>&#44592;&#48376; &#44277;&#44201;: &#49328;&#53444;</span></div>
+<p class="summary">&#52509; HP 160  &#183;  &#49549;&#46020; 3.2  &#183;  &#48512;&#49828;&#53552; 3.6s</p>
+<h4>&#49828;&#53487;</h4>
+<table>
+<tr><td>&#49440;&#52404; HP</td><td class="value">70</td></tr>
+<tr><td>&#45216;&#44060; HP (&#51340;&#183;&#50864; &#44033;&#44033;)</td><td class="value">30</td></tr>
+<tr><td>&#50644;&#51652; HP</td><td class="value">30</td></tr>
+<tr><td>&#52509; HP</td><td class="value">160</td></tr>
+<tr><td>&#51060;&#46041; &#49549;&#46020;</td><td class="value">3.2 (-20%)</td></tr>
+<tr><td>&#48512;&#49828;&#53552; &#51648;&#49549;</td><td class="value">3.6&#52488; (-10%)</td></tr>
+</table>
+<h4>&#51312;&#51456;&#183;&#44592;&#46041;</h4>
+<table>
+<tr><td>&#44592;&#48376; &#44277;&#44201;&#51012; &#44592;&#49688; &#48169;&#54693;&#51004;&#47196; &#48156;&#49324;</td><td class="value">&#50696;</td></tr>
+<tr><td>&#44592;&#48376; &#44277;&#44201;&#51060; &#49440;&#52404;&#47484; &#54364;&#51201;&#51004;&#47196; &#46028;&#47548;</td><td class="value">&#50696;</td></tr>
+<tr><td>&#51312;&#51456; &#49440;&#54924; &#48176;&#50984;</td><td class="value">&#215;0.45</td></tr>
+<tr><td>&#51312;&#51456; &#49440;&#54924; &#49884; &#44592;&#50872;&#51648; &#50506;&#51020;</td><td class="value">&#50500;&#45768;&#50724;</td></tr>
+<tr><td>&#52769;&#47732; &#48516;&#49324; &#45432;&#51600;</td><td class="value">&#50500;&#45768;&#50724;</td></tr>
+<tr><td>&#44592;&#49688; &#49324;&#44201; &#54728;&#50857; &#44033;&#46020;</td><td class="value">30&#176;</td></tr>
+</table>
+<h4>&#44592;&#48376; &#44277;&#44201; &#8212; &#49328;&#53444; (&#44277;&#50857; &#49444;&#51221;)</h4>
+<p class="summary">DPS 23.3 (&#51204;&#53444; &#47749;&#51473;)  &#183;  7&#48156; &#215; 2  &#183;  &#49324;&#44144;&#47532; 16</p>
+<details><summary>&#51204;&#52404; &#49444;&#51221;&#44050; &#183; ScatterWeaponSettings</summary>
+<table>
+<tr><td>Fire Interval</td><td class="value">0.6</td></tr>
+<tr><td>Projectile Speed</td><td class="value">38</td></tr>
+<tr><td>Projectile Lifetime</td><td class="value">0.45</td></tr>
+<tr><td title="Damage of each pellet.">Damage</td><td class="value">2</td></tr>
+<tr><td>Pellets Per Shot</td><td class="value">7</td></tr>
+<tr><td title="Full width of the fan the pellets spread across.">Fan Angle</td><td class="value">24</td></tr>
+<tr><td>Pool Capacity</td><td class="value">28</td></tr>
+<tr><td>Attack Range</td><td class="value">16</td></tr>
+<tr><td>Attack Angle</td><td class="value">60</td></tr>
+</table>
+</details>
+<h4>&#44592;&#48376; &#44277;&#44201; &#50629;&#44536;&#47112;&#51060;&#46300;</h4>
+<table><tr><th>&#45733;&#47141;&#52824;</th><th>&#45800;&#44228;&#45817; &#49345;&#49849;</th><th>&#52572;&#45824; &#45800;&#44228;</th><th>&#45800;&#44228;&#48324; &#48708;&#50857;</th></tr>
+<tr><td>&#54868;&#47141;</td><td>+10%</td><td>3</td><td>150 &#8594; 300 &#8594; 500</td></tr>
+<tr><td>&#50672;&#49324;</td><td>+8%</td><td>3</td><td>150 &#8594; 300 &#8594; 500</td></tr>
+</table>
+<h4>&#53945;&#49688; &#44277;&#44201;</h4>
+<table><tr><th>&#47924;&#44592;</th><th>&#44032;&#44201;</th><th>&#49444;&#51221;</th><th>&#52628;&#51221;&#52824;</th></tr>
+<tr><td>&#54540;&#46972;&#51592;&#47560; &#52880;&#45436;</td><td>&#44592;&#48376; &#48372;&#50976;</td><td>&#44277;&#50857; &#49444;&#51221;</td><td>&#51473;&#49900; 12 / &#50808;&#44285; 6  &#183;  &#52488;&#45817; 2.4  &#183;  &#48152;&#44221; 4</td></tr>
+<tr><td>&#50976;&#46020; &#48120;&#49324;&#51068;</td><td>800</td><td>&#44277;&#50857; &#49444;&#51221;</td><td>&#54924;&#45817; 8 (2&#48156;)  &#183;  &#52488;&#45817; 2.67  &#183;  &#53224;&#45796;&#50868; 3s</td></tr>
+<tr><td>&#47112;&#51068;&#44148;</td><td>1,000</td><td>&#44277;&#50857; &#49444;&#51221;</td><td>&#45800;&#51068; 16  &#183;  &#52572;&#45824; &#44288;&#53685; &#54633;&#44228; 37 (3&#52377;)  &#183;  &#52488;&#45817; 4</td></tr>
+</table>
+<h4>&#54252;&#53457;&#183;&#51452;&#54252; &#48176;&#52824;</h4>
+<table><tr><th>&#51333;&#47448;</th><th>&#54028;&#53944;</th><th>&#50948;&#52824; (x, y, z)</th><th>&#53356;&#44592;</th></tr>
+<tr><td>&#51452; &#54252;&#53457;</td><td>&#50630;&#51020;</td><td>0, 0.5, 0</td><td>&#215;1</td></tr>
+</table>
+<p>&#48176;&#52824; &#50640;&#49483;: Bomber_RK3  &#183;  &#50948;&#52824;&#45716; &#49440;&#52404; &#44592;&#51456; &#51340;&#54364;&#51077;&#45768;&#45796;.</p>
+</article>
+<article class="card" id="player-fighter-zr2"><h3>FIGHTER ZR2</h3>
+<div class="sub">fighter-zr2  &#183;  Player/Ships/fighter-zr2</div>
+<div class="tags"><span>&#51200;&#44201;&#54805;</span><span>&#44592;&#48376; &#44277;&#44201;: &#47112;&#51060;&#51200;</span></div>
+<p class="summary">&#52509; HP 75  &#183;  &#49549;&#46020; 4.4  &#183;  &#48512;&#49828;&#53552; 4.4s</p>
+<h4>&#49828;&#53487;</h4>
+<table>
+<tr><td>&#49440;&#52404; HP</td><td class="value">30</td></tr>
+<tr><td>&#45216;&#44060; HP (&#51340;&#183;&#50864; &#44033;&#44033;)</td><td class="value">15</td></tr>
+<tr><td>&#50644;&#51652; HP</td><td class="value">15</td></tr>
+<tr><td>&#52509; HP</td><td class="value">75</td></tr>
+<tr><td>&#51060;&#46041; &#49549;&#46020;</td><td class="value">4.4 (+10%)</td></tr>
+<tr><td>&#48512;&#49828;&#53552; &#51648;&#49549;</td><td class="value">4.4&#52488; (+10%)</td></tr>
+</table>
+<h4>&#51312;&#51456;&#183;&#44592;&#46041;</h4>
+<table>
+<tr><td>&#44592;&#48376; &#44277;&#44201;&#51012; &#44592;&#49688; &#48169;&#54693;&#51004;&#47196; &#48156;&#49324;</td><td class="value">&#50696;</td></tr>
+<tr><td>&#44592;&#48376; &#44277;&#44201;&#51060; &#49440;&#52404;&#47484; &#54364;&#51201;&#51004;&#47196; &#46028;&#47548;</td><td class="value">&#50696;</td></tr>
+<tr><td>&#51312;&#51456; &#49440;&#54924; &#48176;&#50984;</td><td class="value">&#215;0.9</td></tr>
+<tr><td>&#51312;&#51456; &#49440;&#54924; &#49884; &#44592;&#50872;&#51648; &#50506;&#51020;</td><td class="value">&#50500;&#45768;&#50724;</td></tr>
+<tr><td>&#52769;&#47732; &#48516;&#49324; &#45432;&#51600;</td><td class="value">&#50500;&#45768;&#50724;</td></tr>
+<tr><td>&#44592;&#49688; &#49324;&#44201; &#54728;&#50857; &#44033;&#46020;</td><td class="value">20&#176;</td></tr>
+</table>
+<h4>&#44592;&#48376; &#44277;&#44201; &#8212; &#47112;&#51060;&#51200; (&#44277;&#50857; &#49444;&#51221;)</h4>
+<p class="summary">DPS 6.7  &#183;  &#51068;&#51228;&#49324;&#44201; 2&#48156; &#215; 1  &#183;  &#49324;&#44144;&#47532; 24</p>
+<details><summary>&#51204;&#52404; &#49444;&#51221;&#44050; &#183; LaserWeaponSettings</summary>
+<table>
+<tr><td>Automatic Fire</td><td class="value">&#50696;</td></tr>
+<tr><td>Automatic Attack Range</td><td class="value">24</td></tr>
+<tr><td>Automatic Attack Angle</td><td class="value">70</td></tr>
+<tr><td title="Aim with the aim stick or mouse and fire while the stick is tilted or the button held.">Manual Aim</td><td class="value">&#50696;</td></tr>
+<tr><td title="While firing, swing the nose to the aim and fire from the nose; the ship still travels where the move stick sends it. Off keeps the hull on its course and fires from a ring around it, turret style.">Aim Turns Hull</td><td class="value">&#50500;&#45768;&#50724;</td></tr>
+<tr><td title="With Aim Turns Hull: full width of the cone around the nose the aim must be inside before shots leave.">Aim Nose Fire Cone</td><td class="value">60</td></tr>
+<tr><td>Aim Dead Zone</td><td class="value">0.2</td></tr>
+<tr><td title="Degrees off the aim within which a shot is pulled onto an enemy where it is now (no lead). 0 is fully manual.">Aim Snap Angle</td><td class="value">6</td></tr>
+<tr><td title="Full width of the arc around the nose the guns can aim through. 360 aims all round.">Aim Fire Arc</td><td class="value">360</td></tr>
+<tr><td title="On desktop the guns follow the mouse cursor while the mouse is in use.">Mouse Aim</td><td class="value">&#50696;</td></tr>
+<tr><td title="Degrees per second a mounted turret part swings towards the aim.">Turret Turn Speed</td><td class="value">720</td></tr>
+<tr><td title="Degrees off the aim within which a mounted turret part may fire.">Turret Fire Angle</td><td class="value">15</td></tr>
+<tr><td>Aiming Mode</td><td class="value">Ship Forward</td></tr>
+<tr><td>Fire Interval</td><td class="value">0.3</td></tr>
+<tr><td>Projectile Speed</td><td class="value">34</td></tr>
+<tr><td>Projectile Lifetime</td><td class="value">2.2</td></tr>
+<tr><td>Pool Capacity</td><td class="value">64</td></tr>
+<tr><td title="Damage of each laser bolt. 0 uses the mining settings&#39; laser damage, shared with asteroid mining.">Damage</td><td class="value">0</td></tr>
+<tr><td title="Shots fired together on each side of the muzzle. 0 fires one centered shot.">Shots Per Side</td><td class="value">1</td></tr>
+<tr><td title="World units from the line of fire to the middle of each side&#39;s shots.">Side Offset</td><td class="value">0.6</td></tr>
+<tr><td title="World units between neighbouring shots on one side.">Shot Spacing</td><td class="value">0.22</td></tr>
+</table>
+</details>
+<h4>&#44592;&#48376; &#44277;&#44201; &#50629;&#44536;&#47112;&#51060;&#46300;</h4>
+<table><tr><th>&#45733;&#47141;&#52824;</th><th>&#45800;&#44228;&#45817; &#49345;&#49849;</th><th>&#52572;&#45824; &#45800;&#44228;</th><th>&#45800;&#44228;&#48324; &#48708;&#50857;</th></tr>
+<tr><td>&#54868;&#47141;</td><td>+10%</td><td>3</td><td>150 &#8594; 300 &#8594; 500</td></tr>
+<tr><td>&#50672;&#49324;</td><td>+8%</td><td>3</td><td>150 &#8594; 300 &#8594; 500</td></tr>
+</table>
+<h4>&#53945;&#49688; &#44277;&#44201;</h4>
+<table><tr><th>&#47924;&#44592;</th><th>&#44032;&#44201;</th><th>&#49444;&#51221;</th><th>&#52628;&#51221;&#52824;</th></tr>
+<tr><td>&#47112;&#51068;&#44148;</td><td>&#44592;&#48376; &#48372;&#50976;</td><td>&#44277;&#50857; &#49444;&#51221;</td><td>&#45800;&#51068; 16  &#183;  &#52572;&#45824; &#44288;&#53685; &#54633;&#44228; 37 (3&#52377;)  &#183;  &#52488;&#45817; 4</td></tr>
+<tr><td>&#51648;&#49549; &#48724;</td><td>800</td><td>&#44277;&#50857; &#49444;&#51221;</td><td>&#54924;&#45817; 28 (14&#54001;)  &#183;  &#52488;&#45817; 3.11  &#183;  &#49324;&#51060;&#53364; 9s</td></tr>
+<tr><td>&#50672;&#49604; &#48264;&#44060;</td><td>1,100</td><td>&#44277;&#50857; &#49444;&#51221;</td><td>&#52395; &#53440;&#44201; 8  &#183;  &#52572;&#45824; &#50672;&#49604; &#54633;&#44228; 21.9 (4&#54924;)  &#183;  &#52488;&#45817; 1.33</td></tr>
+</table>
+<h4>&#54252;&#53457;&#183;&#51452;&#54252; &#48176;&#52824;</h4>
+<table><tr><th>&#51333;&#47448;</th><th>&#54028;&#53944;</th><th>&#50948;&#52824; (x, y, z)</th><th>&#53356;&#44592;</th></tr>
+<tr><td>&#51452; &#54252;&#53457;</td><td>&#50630;&#51020;</td><td>0, 0.5, 0</td><td>&#215;1</td></tr>
+</table>
+<p>&#48176;&#52824; &#50640;&#49483;: SF_Fighter_ZR2  &#183;  &#50948;&#52824;&#45716; &#49440;&#52404; &#44592;&#51456; &#51340;&#54364;&#51077;&#45768;&#45796;.</p>
+</article>
+</div></section>
+<section><h2 id="player-shared">&#54540;&#47112;&#51060;&#50612; &#44277;&#50857; &#49444;&#51221;</h2>
+<p class="note">&#54632;&#49440;&#51060; &#51204;&#50857; &#49444;&#51221;&#51012; &#44054;&#51648; &#50506;&#51004;&#47732; &#50416;&#45716; &#44592;&#51456;&#44050;&#51077;&#45768;&#45796;. &#54637;&#47785;&#50640; &#54252;&#51064;&#53552;&#47484; &#50732;&#47532;&#47732; &#49444;&#47749;&#51060; &#48372;&#51077;&#45768;&#45796;.</p>
+<div class="cards">
+<article class="card" id="shared-laser"><h3>&#47112;&#51060;&#51200;</h3>
+<div class="sub">Assets/Settings/Gameplay/Spaceship/LaserWeaponSettings.asset</div>
+<table>
+<tr><td>Automatic Fire</td><td class="value">&#50696;</td></tr>
+<tr><td>Automatic Attack Range</td><td class="value">24</td></tr>
+<tr><td>Automatic Attack Angle</td><td class="value">70</td></tr>
+<tr><td title="Aim with the aim stick or mouse and fire while the stick is tilted or the button held.">Manual Aim</td><td class="value">&#50696;</td></tr>
+<tr><td title="While firing, swing the nose to the aim and fire from the nose; the ship still travels where the move stick sends it. Off keeps the hull on its course and fires from a ring around it, turret style.">Aim Turns Hull</td><td class="value">&#50500;&#45768;&#50724;</td></tr>
+<tr><td title="With Aim Turns Hull: full width of the cone around the nose the aim must be inside before shots leave.">Aim Nose Fire Cone</td><td class="value">60</td></tr>
+<tr><td>Aim Dead Zone</td><td class="value">0.2</td></tr>
+<tr><td title="Degrees off the aim within which a shot is pulled onto an enemy where it is now (no lead). 0 is fully manual.">Aim Snap Angle</td><td class="value">6</td></tr>
+<tr><td title="Full width of the arc around the nose the guns can aim through. 360 aims all round.">Aim Fire Arc</td><td class="value">360</td></tr>
+<tr><td title="On desktop the guns follow the mouse cursor while the mouse is in use.">Mouse Aim</td><td class="value">&#50696;</td></tr>
+<tr><td title="Degrees per second a mounted turret part swings towards the aim.">Turret Turn Speed</td><td class="value">720</td></tr>
+<tr><td title="Degrees off the aim within which a mounted turret part may fire.">Turret Fire Angle</td><td class="value">15</td></tr>
+<tr><td>Aiming Mode</td><td class="value">Ship Forward</td></tr>
+<tr><td>Fire Interval</td><td class="value">0.3</td></tr>
+<tr><td>Projectile Speed</td><td class="value">34</td></tr>
+<tr><td>Projectile Lifetime</td><td class="value">2.2</td></tr>
+<tr><td>Pool Capacity</td><td class="value">64</td></tr>
+<tr><td title="Damage of each laser bolt. 0 uses the mining settings&#39; laser damage, shared with asteroid mining.">Damage</td><td class="value">0</td></tr>
+<tr><td title="Shots fired together on each side of the muzzle. 0 fires one centered shot.">Shots Per Side</td><td class="value">1</td></tr>
+<tr><td title="World units from the line of fire to the middle of each side&#39;s shots.">Side Offset</td><td class="value">0.6</td></tr>
+<tr><td title="World units between neighbouring shots on one side.">Shot Spacing</td><td class="value">0.22</td></tr>
+</table>
+</article>
+<article class="card" id="shared-vulcan"><h3>&#48268;&#52968;</h3>
+<div class="sub">Assets/Settings/Gameplay/Spaceship/VulcanWeaponSettings.asset</div>
+<table>
+<tr><td>Fire Interval</td><td class="value">0.1</td></tr>
+<tr><td>Projectile Speed</td><td class="value">42</td></tr>
+<tr><td>Projectile Lifetime</td><td class="value">0.75</td></tr>
+<tr><td>Damage</td><td class="value">2</td></tr>
+<tr><td>Pool Capacity</td><td class="value">32</td></tr>
+<tr><td>Attack Range</td><td class="value">22</td></tr>
+<tr><td>Attack Angle</td><td class="value">70</td></tr>
+<tr><td>Spread Angle</td><td class="value">1.5</td></tr>
+<tr><td title="Shots fired together on each side of the line of fire; 0 fires one centred shot. On a hull with a pair of primary guns (the MG4&#39;s wing guns) 1 fires one shot from each gun at once, and the guns set the spacing.">Shots Per Side</td><td class="value">0</td></tr>
+<tr><td title="Distance from the line of fire to each side&#39;s shots, where no guns set it.">Side Offset</td><td class="value">0.3</td></tr>
+<tr><td title="Distance between neighbouring shots on the same side.">Shot Spacing</td><td class="value">0.2</td></tr>
+</table>
+</article>
+<article class="card" id="shared-scatter"><h3>&#49328;&#53444;</h3>
+<div class="sub">Assets/Settings/Gameplay/Spaceship/ScatterWeaponSettings.asset</div>
+<table>
+<tr><td>Fire Interval</td><td class="value">0.6</td></tr>
+<tr><td>Projectile Speed</td><td class="value">38</td></tr>
+<tr><td>Projectile Lifetime</td><td class="value">0.45</td></tr>
+<tr><td title="Damage of each pellet.">Damage</td><td class="value">2</td></tr>
+<tr><td>Pellets Per Shot</td><td class="value">7</td></tr>
+<tr><td title="Full width of the fan the pellets spread across.">Fan Angle</td><td class="value">24</td></tr>
+<tr><td>Pool Capacity</td><td class="value">28</td></tr>
+<tr><td>Attack Range</td><td class="value">16</td></tr>
+<tr><td>Attack Angle</td><td class="value">60</td></tr>
+</table>
+</article>
+<article class="card" id="shared-missile"><h3>&#50976;&#46020; &#48120;&#49324;&#51068;</h3>
+<div class="sub">Assets/Settings/Gameplay/Spaceship/HomingMissileSettings.asset</div>
+<table>
+<tr><td title="Seconds before another wing missile volley can be fired.">Cooldown Duration</td><td class="value">3</td></tr>
+<tr><td>Speed</td><td class="value">24</td></tr>
+<tr><td>Turn Speed</td><td class="value">180</td></tr>
+<tr><td>Lifetime</td><td class="value">5</td></tr>
+<tr><td>Guidance Delay</td><td class="value">0.2</td></tr>
+<tr><td>Lock Range</td><td class="value">60</td></tr>
+<tr><td>Lock Angle</td><td class="value">85</td></tr>
+<tr><td>Hit Radius</td><td class="value">0.25</td></tr>
+<tr><td>Damage</td><td class="value">4</td></tr>
+<tr><td>Pool Capacity</td><td class="value">16</td></tr>
+</table>
+</article>
+<article class="card" id="shared-beam"><h3>&#51648;&#49549; &#48724;</h3>
+<div class="sub">Assets/Settings/Gameplay/Spaceship/ContinuousBeamSettings.asset</div>
+<table>
+<tr><td>Range</td><td class="value">14</td></tr>
+<tr><td>Duration</td><td class="value">3</td></tr>
+<tr><td>Cooldown</td><td class="value">6</td></tr>
+<tr><td>Damage Interval</td><td class="value">0.2</td></tr>
+<tr><td>Damage Per Tick</td><td class="value">2</td></tr>
+<tr><td>Aim Cone</td><td class="value">120</td></tr>
+</table>
+</article>
+<article class="card" id="shared-plasma"><h3>&#54540;&#46972;&#51592;&#47560; &#52880;&#45436;</h3>
+<div class="sub">Assets/Settings/Gameplay/Spaceship/PlasmaCannonSettings.asset</div>
+<table>
+<tr><td>Cooldown</td><td class="value">5</td></tr>
+<tr><td>Speed</td><td class="value">16</td></tr>
+<tr><td>Lifetime</td><td class="value">2</td></tr>
+<tr><td title="Damage at the centre of the burst.">Damage</td><td class="value">12</td></tr>
+<tr><td>Blast Radius</td><td class="value">4</td></tr>
+<tr><td title="Share of the damage left at the edge of the burst.">Edge Damage Fraction</td><td class="value">0.5</td></tr>
+<tr><td title="Radius of the shell&#39;s contact check.">Hit Radius</td><td class="value">0.3</td></tr>
+<tr><td>Pool Capacity</td><td class="value">4</td></tr>
+</table>
+</article>
+<article class="card" id="shared-railgun"><h3>&#47112;&#51068;&#44148;</h3>
+<div class="sub">Assets/Settings/Gameplay/Spaceship/RailgunSettings.asset</div>
+<table>
+<tr><td>Cooldown</td><td class="value">4</td></tr>
+<tr><td>Range</td><td class="value">40</td></tr>
+<tr><td>Damage</td><td class="value">16</td></tr>
+<tr><td title="Ships one shot can damage before it stops.">Max Targets</td><td class="value">3</td></tr>
+<tr><td title="Damage kept after passing through each ship.">Pierce Damage Factor</td><td class="value">0.75</td></tr>
+<tr><td title="Half the width of the shot&#39;s hit check.">Hit Radius</td><td class="value">0.25</td></tr>
+</table>
+</article>
+<article class="card" id="shared-chain"><h3>&#50672;&#49604; &#48264;&#44060;</h3>
+<div class="sub">Assets/Settings/Gameplay/Spaceship/ChainLightningSettings.asset</div>
+<table>
+<tr><td>Cooldown</td><td class="value">6</td></tr>
+<tr><td title="Reach of the first strike from the ship.">Range</td><td class="value">18</td></tr>
+<tr><td title="Reach of each leap from the last ship struck.">Leap Range</td><td class="value">8</td></tr>
+<tr><td title="The first strike and every leap after it. The view needs one line per strike.">Max Strikes</td><td class="value">4</td></tr>
+<tr><td>Damage</td><td class="value">8</td></tr>
+<tr><td title="Damage kept after each leap.">Leap Damage Factor</td><td class="value">0.75</td></tr>
+<tr><td title="Width of the cone around the aim searched first for the first strike; if it is empty, the nearest ship is struck.">Aim Cone</td><td class="value">120</td></tr>
+</table>
+</article>
+<article class="card" id="shared-turret"><h3>&#54252;&#53457; &#51204;&#53804;</h3>
+<div class="sub">Assets/Settings/Gameplay/Spaceship/TurretCombatSettings.asset</div>
+<table>
+<tr><td>Acquisition Range</td><td class="value">38</td></tr>
+<tr><td>Turn Speed</td><td class="value">240</td></tr>
+<tr><td>Alignment Angle</td><td class="value">3</td></tr>
+<tr><td>Scan Interval</td><td class="value">0.15</td></tr>
+</table>
+</article>
+<article class="card" id="shared-flight"><h3>&#48708;&#54665;</h3>
+<div class="sub">Assets/Settings/Gameplay/Spaceship/FlightSettings.asset</div>
+<table>
+<tr><td>Move Speed</td><td class="value">4</td></tr>
+<tr><td>Turn Speed</td><td class="value">180</td></tr>
+<tr><td>Turn Smooth Time</td><td class="value">0.28</td></tr>
+<tr><td>Angular Release Damping</td><td class="value">8</td></tr>
+<tr><td>Acceleration</td><td class="value">14</td></tr>
+<tr><td>Braking</td><td class="value">1</td></tr>
+<tr><td title="How fast the ship&#39;s speed fades per second once the movement keys are released; lower glides further.">Coast Drag</td><td class="value">1.2</td></tr>
+<tr><td title="Degrees per second the ship&#39;s travel direction can swing towards a new input; lower makes wider turns, 0 turns at once.">Velocity Turn Rate</td><td class="value">240</td></tr>
+<tr><td title="Share of the speed held while swinging to the opposite direction; lower makes sharp turns tighter, 1 never slows.">Sharp Turn Speed Share</td><td class="value">0.5</td></tr>
+<tr><td title="How fast the extra speed from a boost fades per second after the boost ends; lower eases down longer, 0 drops it at once.">Boost Fade</td><td class="value">1.5</td></tr>
+<tr><td title="While an enemy is locked within weapon range, keep the nose on it and strafe instead of turning to travel.">Face Locked Target</td><td class="value">&#50696;</td></tr>
+<tr><td title="Degrees per second the nose swings towards the aim while firing, moving or not.">Aim Turn Speed</td><td class="value">540</td></tr>
+<tr><td title="Seconds of smoothing on that swing; lower snaps round sooner.">Aim Turn Smooth Time</td><td class="value">0.08</td></tr>
+<tr><td>Turn Thruster Acceleration</td><td class="value">720</td></tr>
+<tr><td>Max Bank Angle</td><td class="value">32</td></tr>
+<tr><td>Bank Response</td><td class="value">12</td></tr>
+<tr><td>Bank Damping Ratio</td><td class="value">0.75</td></tr>
+<tr><td>Full Bank Turn Rate</td><td class="value">150</td></tr>
+<tr><td>Responsive Flight</td><td class="value">&#50696;</td></tr>
+<tr><td>Steering Response Multiplier</td><td class="value">1.5</td></tr>
+<tr><td>Acceleration Response Multiplier</td><td class="value">1.6</td></tr>
+<tr><td>Braking Response Multiplier</td><td class="value">1.8</td></tr>
+<tr><td title="Share of the approach speed kept when the ship bounces off a rock: 0 stops dead, 1 is a perfect bounce.">Rock Restitution</td><td class="value">0.55</td></tr>
+<tr><td title="Speed the ship always leaves a rock with, so pressing into it still pushes the ship clear.">Rock Separation Speed</td><td class="value">2.5</td></tr>
+<tr><td title="How fast a knock from a blast or a rock bounce fades, per second; higher stops the ship sooner.">Knock Damping</td><td class="value">2.5</td></tr>
+</table>
+</article>
+<article class="card" id="shared-health"><h3>&#52404;&#47141;&#183;&#54588;&#44201;</h3>
+<div class="sub">Assets/Settings/Gameplay/Spaceship/HealthSettings.asset</div>
+<table>
+<tr><td>Collision Damage</td><td class="value">10</td></tr>
+<tr><td>Damage Interval</td><td class="value">1</td></tr>
+<tr><td>Hull Hp</td><td class="value">40</td></tr>
+<tr><td>Left Wing Hp</td><td class="value">20</td></tr>
+<tr><td>Right Wing Hp</td><td class="value">20</td></tr>
+<tr><td>Engine Hp</td><td class="value">20</td></tr>
+<tr><td>Engine Speed Penalty</td><td class="value">0.15</td></tr>
+<tr><td title="Booster duration lost while the engine is destroyed; the booster stays usable.">Engine Booster Penalty</td><td class="value">0.5</td></tr>
+<tr><td>Wing Turn Penalty</td><td class="value">0.2</td></tr>
+</table>
+</article>
+<article class="card" id="shared-booster"><h3>&#48512;&#49828;&#53552;</h3>
+<div class="sub">Assets/Settings/Gameplay/Spaceship/BoosterSettings.asset</div>
+<table>
+<tr><td>Drain Per Second</td><td class="value">0.25</td></tr>
+<tr><td>Recovery Per Second</td><td class="value">0.15</td></tr>
+<tr><td>Recovery Delay</td><td class="value">0.75</td></tr>
+<tr><td>Speed Multiplier</td><td class="value">2.2</td></tr>
+<tr><td>Flame Scale</td><td class="value">1.65</td></tr>
+<tr><td>Flame Emission Multiplier</td><td class="value">1.5</td></tr>
+</table>
+</article>
+</div></section>
+<section><h2 id="enemy-ships">&#51201; &#54632;&#49440;</h2>
+<p class="note">&#51201; &#49688;&#52824;&#45716; &#49440;&#52404;&#48324; &#50640;&#49483;&#51060; &#50500;&#45768;&#46972; &#44277;&#53685; &#51201; &#49444;&#51221;&#50640;&#49436; &#49440;&#52404; &#44508;&#52825;&#51004;&#47196; &#44228;&#49328;&#46121;&#45768;&#45796;. &#44592;&#48152; &#53364;&#47000;&#49828;&#44032; &#44057;&#51008; &#49440;&#52404;&#45716; HP&#183;&#44592;&#46041; &#44050;&#51012; &#54632;&#44760; &#50433;&#45768;&#45796;.</p>
+<div class="cards">
+<article class="card" id="enemy-Fighter"><h3>&#51204;&#53804;&#44592;</h3>
+<div class="sub">Fighter  &#183;  Enemies/Ships/Fighter</div>
+<div class="tags"><span>&#49440;&#54924; &#49324;&#44201;</span></div>
+<h4>&#49828;&#53487;</h4>
+<table>
+<tr><td>HP</td><td class="value">80</td></tr>
+<tr><td>&#51060;&#46041; &#49549;&#46020;</td><td class="value">6.875 (&#215;1.25)</td></tr>
+<tr><td>&#49440;&#54924; &#49549;&#46020;</td><td class="value">160&#176;/&#52488; (&#215;1.6)</td></tr>
+<tr><td>&#44592;&#46041;&#49457;</td><td class="value">1</td></tr>
+<tr><td>&#53456;&#51648; &#44144;&#47532;</td><td class="value">45</td></tr>
+<tr><td>&#44277;&#44201; &#44144;&#47532;</td><td class="value">24</td></tr>
+<tr><td>&#53356;&#44592; (&#51204;&#51109;)</td><td class="value">4.368 (&#44592;&#51456; &#215;1.2)</td></tr>
+<tr><td title="&#49440;&#52404; &#54532;&#47532;&#54073;&#50640; &#45804;&#47536; &#54924;&#51204; &#54252;&#53457; &#54028;&#53944;&#51032; &#49688;&#51077;&#45768;&#45796;.">&#54252;&#53457; &#49688;</td><td class="value">1</td></tr>
+</table>
+<h4>&#44592;&#48376; &#49324;&#44201; &#8212; &#50672;&#49324;</h4>
+<table>
+<tr><td>&#53444;&#45817; &#54588;&#54644;</td><td class="value">1</td></tr>
+<tr><td>&#53444;&#49549;</td><td class="value">18</td></tr>
+<tr><td>&#53444; &#49688;&#47749;</td><td class="value">1.4&#52488;</td></tr>
+<tr><td>&#53444; &#46020;&#45804; &#44144;&#47532;</td><td class="value">25.2</td></tr>
+<tr><td>&#53444; &#54140;&#51664;</td><td class="value">6&#176;</td></tr>
+<tr><td title="&#47784;&#46304; &#49440;&#52404;&#44032; &#54632;&#44760; &#50416;&#45716; &#44050;&#51077;&#45768;&#45796;.">&#48156;&#49324; &#44036;&#44201;</td><td class="value">0.4&#52488;</td></tr>
+<tr><td title="&#47784;&#46304; &#49440;&#52404;&#44032; &#54632;&#44760; &#50416;&#45716; &#44050;&#51077;&#45768;&#45796;.">&#50672;&#49324; &#49688;</td><td class="value">3</td></tr>
+<tr><td title="&#47784;&#46304; &#49440;&#52404;&#44032; &#54632;&#44760; &#50416;&#45716; &#44050;&#51077;&#45768;&#45796;.">&#50672;&#49324; &#54980; &#55092;&#49885;</td><td class="value">2.2&#52488;</td></tr>
+</table>
+</article>
+<article class="card" id="enemy-Dropship"><h3>&#46300;&#47213;&#49901;</h3>
+<div class="sub">Dropship  &#183;  Enemies/Ships/Dropship</div>
+<div class="tags"><span>&#54252;&#53457; &#49440;&#54924;</span><span>&#51648;&#47280;</span><span>&#51088;&#52404; &#48372;&#54840;&#47561;</span></div>
+<h4>&#49828;&#53487;</h4>
+<table>
+<tr><td>HP</td><td class="value">80</td></tr>
+<tr><td>&#51088;&#52404; &#48372;&#54840;&#47561;</td><td class="value">60</td></tr>
+<tr><td>&#51060;&#46041; &#49549;&#46020;</td><td class="value">5.775 (&#215;1.05)</td></tr>
+<tr><td>&#49440;&#54924; &#49549;&#46020;</td><td class="value">120&#176;/&#52488; (&#215;1.2)</td></tr>
+<tr><td>&#44592;&#46041;&#49457;</td><td class="value">0.75</td></tr>
+<tr><td>&#53456;&#51648; &#44144;&#47532;</td><td class="value">45</td></tr>
+<tr><td>&#44277;&#44201; &#44144;&#47532;</td><td class="value">24</td></tr>
+<tr><td>&#53356;&#44592; (&#51204;&#51109;)</td><td class="value">5.824 (&#44592;&#51456; &#215;1.6)</td></tr>
+<tr><td title="&#49440;&#52404; &#54532;&#47532;&#54073;&#50640; &#45804;&#47536; &#54924;&#51204; &#54252;&#53457; &#54028;&#53944;&#51032; &#49688;&#51077;&#45768;&#45796;.">&#54252;&#53457; &#49688;</td><td class="value">1</td></tr>
+</table>
+<h4>&#44592;&#48376; &#49324;&#44201; &#8212; &#50672;&#49324;</h4>
+<table>
+<tr><td>&#53444;&#45817; &#54588;&#54644;</td><td class="value">1</td></tr>
+<tr><td>&#53444;&#49549;</td><td class="value">18</td></tr>
+<tr><td>&#53444; &#49688;&#47749;</td><td class="value">1.4&#52488;</td></tr>
+<tr><td>&#53444; &#46020;&#45804; &#44144;&#47532;</td><td class="value">25.2</td></tr>
+<tr><td>&#53444; &#54140;&#51664;</td><td class="value">6&#176;</td></tr>
+<tr><td title="&#47784;&#46304; &#49440;&#52404;&#44032; &#54632;&#44760; &#50416;&#45716; &#44050;&#51077;&#45768;&#45796;.">&#48156;&#49324; &#44036;&#44201;</td><td class="value">0.4&#52488;</td></tr>
+<tr><td title="&#47784;&#46304; &#49440;&#52404;&#44032; &#54632;&#44760; &#50416;&#45716; &#44050;&#51077;&#45768;&#45796;.">&#50672;&#49324; &#49688;</td><td class="value">3</td></tr>
+<tr><td title="&#47784;&#46304; &#49440;&#52404;&#44032; &#54632;&#44760; &#50416;&#45716; &#44050;&#51077;&#45768;&#45796;.">&#50672;&#49324; &#54980; &#55092;&#49885;</td><td class="value">2.2&#52488;</td></tr>
+</table>
+<h4>&#53945;&#49688; &#8212; &#51648;&#47280;</h4>
+<table>
+<tr><td>&#49444;&#52824; &#44036;&#44201;</td><td class="value">5&#52488;</td></tr>
+<tr><td>&#52572;&#45824; &#50976;&#51648; &#49688;</td><td class="value">6</td></tr>
+<tr><td>&#54876;&#49457;&#54868; &#51648;&#50672;</td><td class="value">1&#52488;</td></tr>
+<tr><td>&#44048;&#51648; &#48152;&#44221;</td><td class="value">2.5</td></tr>
+<tr><td>&#54253;&#48156; &#48152;&#44221;</td><td class="value">3.5</td></tr>
+<tr><td>&#54588;&#54644;</td><td class="value">3</td></tr>
+<tr><td>&#51648;&#47280; HP</td><td class="value">10</td></tr>
+<tr><td>&#52628;&#51201; &#44144;&#47532; / &#49549;&#46020;</td><td class="value">8 / 5</td></tr>
+</table>
+<h4>&#53945;&#49688; &#8212; &#51088;&#52404; &#48372;&#54840;&#47561;</h4>
+<table>
+<tr><td>&#48372;&#54840;&#47561; &#50857;&#47049;</td><td class="value">60</td></tr>
+<tr><td>&#51116;&#49373; &#51648;&#50672;</td><td class="value">3&#52488;</td></tr>
+<tr><td>&#52488;&#45817; &#51116;&#49373;</td><td class="value">12</td></tr>
+</table>
+</article>
+<article class="card" id="enemy-Corvette"><h3>&#53076;&#47476;&#48307;</h3>
+<div class="sub">Corvette  &#183;  Enemies/Ships/Corvette</div>
+<div class="tags"><span>&#49933;&#50676;&#54252;</span><span>&#52649;&#51204; &#48724;</span></div>
+<h4>&#49828;&#53487;</h4>
+<table>
+<tr><td>HP</td><td class="value">150</td></tr>
+<tr><td>&#51060;&#46041; &#49549;&#46020;</td><td class="value">4.675 (&#215;0.85)</td></tr>
+<tr><td>&#49440;&#54924; &#49549;&#46020;</td><td class="value">75&#176;/&#52488; (&#215;0.75)</td></tr>
+<tr><td>&#44592;&#46041;&#49457;</td><td class="value">0.45</td></tr>
+<tr><td>&#53456;&#51648; &#44144;&#47532;</td><td class="value">45</td></tr>
+<tr><td>&#44277;&#44201; &#44144;&#47532;</td><td class="value">24</td></tr>
+<tr><td>&#53356;&#44592; (&#51204;&#51109;)</td><td class="value">9.1 (&#44592;&#51456; &#215;2.5)</td></tr>
+<tr><td title="&#49440;&#52404; &#54532;&#47532;&#54073;&#50640; &#45804;&#47536; &#54924;&#51204; &#54252;&#53457; &#54028;&#53944;&#51032; &#49688;&#51077;&#45768;&#45796;.">&#54252;&#53457; &#49688;</td><td class="value">2</td></tr>
+</table>
+<h4>&#44592;&#48376; &#49324;&#44201; &#8212; &#50672;&#49324;</h4>
+<table>
+<tr><td>&#53444;&#45817; &#54588;&#54644;</td><td class="value">1</td></tr>
+<tr><td>&#53444;&#49549;</td><td class="value">14</td></tr>
+<tr><td>&#53444; &#49688;&#47749;</td><td class="value">1.7&#52488;</td></tr>
+<tr><td>&#53444; &#46020;&#45804; &#44144;&#47532;</td><td class="value">23.8</td></tr>
+<tr><td>&#53444; &#54140;&#51664;</td><td class="value">6&#176;</td></tr>
+<tr><td>&#49933;&#50676;&#54252; &#44036;&#44201;</td><td class="value">0.5</td></tr>
+<tr><td title="&#47784;&#46304; &#49440;&#52404;&#44032; &#54632;&#44760; &#50416;&#45716; &#44050;&#51077;&#45768;&#45796;.">&#48156;&#49324; &#44036;&#44201;</td><td class="value">0.4&#52488;</td></tr>
+<tr><td title="&#47784;&#46304; &#49440;&#52404;&#44032; &#54632;&#44760; &#50416;&#45716; &#44050;&#51077;&#45768;&#45796;.">&#50672;&#49324; &#49688;</td><td class="value">3</td></tr>
+<tr><td title="&#47784;&#46304; &#49440;&#52404;&#44032; &#54632;&#44760; &#50416;&#45716; &#44050;&#51077;&#45768;&#45796;.">&#50672;&#49324; &#54980; &#55092;&#49885;</td><td class="value">2.2&#52488;</td></tr>
+</table>
+<h4>&#53945;&#49688; &#8212; &#52649;&#51204; &#48724;</h4>
+<table>
+<tr><td title="&#51201; &#49444;&#51221;&#51032; &#53945;&#49688; &#44277;&#44201; &#49828;&#50948;&#52824;&#44032; &#44732;&#51648;&#47732; &#50136;&#51648; &#50506;&#49845;&#45768;&#45796;.">&#49324;&#50857;</td><td class="value">&#50696;</td></tr>
+<tr><td>&#44036;&#44201;</td><td class="value">8&#52488;</td></tr>
+<tr><td>&#52649;&#51204; &#49884;&#44036;</td><td class="value">0.9&#52488;</td></tr>
+<tr><td>&#51648;&#49549; &#49884;&#44036;</td><td class="value">0.1&#52488;</td></tr>
+<tr><td>&#49324;&#44144;&#47532;</td><td class="value">32</td></tr>
+<tr><td>&#54588;&#54644;</td><td class="value">4</td></tr>
+</table>
+</article>
+<article class="card" id="enemy-Battleship"><h3>&#51204;&#54632;</h3>
+<div class="sub">Battleship  &#183;  Enemies/Ships/Battleship</div>
+<div class="tags"><span>&#51452;&#54252; &#50630;&#51020;</span><span>&#51473;&#54868;&#44592; &#54056;&#53556;</span><span>&#50836;&#44201;&#44592; &#44201;&#45225;&#44256;</span></div>
+<h4>&#49828;&#53487;</h4>
+<table>
+<tr><td>HP</td><td class="value">240</td></tr>
+<tr><td>&#51060;&#46041; &#49549;&#46020;</td><td class="value">3.3 (&#215;0.6)</td></tr>
+<tr><td>&#49440;&#54924; &#49549;&#46020;</td><td class="value">35&#176;/&#52488; (&#215;0.35)</td></tr>
+<tr><td>&#44592;&#46041;&#49457;</td><td class="value">0.2</td></tr>
+<tr><td>&#53456;&#51648; &#44144;&#47532;</td><td class="value">45</td></tr>
+<tr><td>&#44277;&#44201; &#44144;&#47532;</td><td class="value">24</td></tr>
+<tr><td>&#53356;&#44592; (&#51204;&#51109;)</td><td class="value">16.016 (&#44592;&#51456; &#215;4.4)</td></tr>
+<tr><td title="&#49440;&#52404; &#54532;&#47532;&#54073;&#50640; &#45804;&#47536; &#54924;&#51204; &#54252;&#53457; &#54028;&#53944;&#51032; &#49688;&#51077;&#45768;&#45796;.">&#54252;&#53457; &#49688;</td><td class="value">4</td></tr>
+</table>
+<h4>&#53945;&#49688; &#8212; &#51473;&#54868;&#44592; &#54056;&#53556;</h4>
+<table>
+<tr><td>&#54056;&#53556; &#53224;&#45796;&#50868;</td><td class="value">3&#52488;</td></tr>
+<tr><td>&#52649;&#44201;&#54028; &#48156;&#46041; &#44144;&#47532; / &#48152;&#44221;</td><td class="value">14 / 14</td></tr>
+<tr><td>&#52649;&#44201;&#54028; &#50696;&#44256; / &#54588;&#54644;</td><td class="value">1.1&#52488; / 6</td></tr>
+<tr><td>&#54788;&#52769; &#54252;&#44201; &#52572;&#45824; &#44144;&#47532;</td><td class="value">24</td></tr>
+<tr><td>&#54788;&#52769; &#54252;&#44201; &#50696;&#44256;</td><td class="value">0.8&#52488;</td></tr>
+<tr><td>&#54788;&#52769; &#54252;&#44201; &#53444; &#49688; / &#54140;&#51664;</td><td class="value">7 / 60</td></tr>
+</table>
+<h4>&#53945;&#49688; &#8212; &#50836;&#44201;&#44592; &#44201;&#45225;&#44256;</h4>
+<table>
+<tr><td>&#49324;&#50857;</td><td class="value">&#50696;</td></tr>
+<tr><td>&#48156;&#51652; &#44592;&#51333;</td><td class="value">&#50836;&#44201;&#44592;</td></tr>
+<tr><td>&#51116;&#44148;&#51312; &#44036;&#44201;</td><td class="value">8&#52488;</td></tr>
+<tr><td>&#47784;&#54632;&#45817; &#52572;&#45824;</td><td class="value">4</td></tr>
+<tr><td>&#51204;&#51109; &#51204;&#52404; &#52572;&#45824;</td><td class="value">4</td></tr>
+</table>
+</article>
+<article class="card" id="enemy-Sparrow"><h3>&#49828;&#54056;&#47196;&#50864;</h3>
+<div class="sub">Sparrow  &#183;  Enemies/Ships/Sparrow</div>
+<div class="tags"><span>&#52824;&#44256; &#48736;&#51648;&#44592;</span><span>&#48120;&#49324;&#51068;</span></div>
+<h4>&#49828;&#53487;</h4>
+<table>
+<tr><td>HP</td><td class="value">80</td></tr>
+<tr><td>&#51060;&#46041; &#49549;&#46020;</td><td class="value">6.875 (&#215;1.25)</td></tr>
+<tr><td>&#49440;&#54924; &#49549;&#46020;</td><td class="value">160&#176;/&#52488; (&#215;1.6)</td></tr>
+<tr><td>&#44592;&#46041;&#49457;</td><td class="value">1</td></tr>
+<tr><td>&#53456;&#51648; &#44144;&#47532;</td><td class="value">45</td></tr>
+<tr><td>&#44277;&#44201; &#44144;&#47532;</td><td class="value">24</td></tr>
+<tr><td>&#53356;&#44592; (&#51204;&#51109;)</td><td class="value">4.368 (&#44592;&#51456; &#215;1.2)</td></tr>
+<tr><td title="&#49440;&#52404; &#54532;&#47532;&#54073;&#50640; &#45804;&#47536; &#54924;&#51204; &#54252;&#53457; &#54028;&#53944;&#51032; &#49688;&#51077;&#45768;&#45796;.">&#54252;&#53457; &#49688;</td><td class="value">1</td></tr>
+</table>
+<h4>&#44592;&#48376; &#49324;&#44201; &#8212; &#50672;&#49324;</h4>
+<table>
+<tr><td>&#53444;&#45817; &#54588;&#54644;</td><td class="value">1</td></tr>
+<tr><td>&#53444;&#49549;</td><td class="value">14</td></tr>
+<tr><td>&#53444; &#49688;&#47749;</td><td class="value">1.7&#52488;</td></tr>
+<tr><td>&#53444; &#46020;&#45804; &#44144;&#47532;</td><td class="value">23.8</td></tr>
+<tr><td>&#53444; &#54140;&#51664;</td><td class="value">6&#176;</td></tr>
+<tr><td title="&#47784;&#46304; &#49440;&#52404;&#44032; &#54632;&#44760; &#50416;&#45716; &#44050;&#51077;&#45768;&#45796;.">&#48156;&#49324; &#44036;&#44201;</td><td class="value">0.4&#52488;</td></tr>
+<tr><td title="&#47784;&#46304; &#49440;&#52404;&#44032; &#54632;&#44760; &#50416;&#45716; &#44050;&#51077;&#45768;&#45796;.">&#50672;&#49324; &#49688;</td><td class="value">3</td></tr>
+<tr><td title="&#47784;&#46304; &#49440;&#52404;&#44032; &#54632;&#44760; &#50416;&#45716; &#44050;&#51077;&#45768;&#45796;.">&#50672;&#49324; &#54980; &#55092;&#49885;</td><td class="value">2.2&#52488;</td></tr>
+</table>
+<h4>&#53945;&#49688; &#8212; &#48120;&#49324;&#51068;</h4>
+<table>
+<tr><td>&#44036;&#44201;</td><td class="value">8&#52488;</td></tr>
+<tr><td>&#48120;&#49324;&#51068; &#49549;&#46020;</td><td class="value">11</td></tr>
+<tr><td>&#54588;&#54644;</td><td class="value">2</td></tr>
+</table>
+</article>
+<article class="card" id="enemy-Interceptor"><h3>&#50836;&#44201;&#44592;</h3>
+<div class="sub">Interceptor  &#183;  Enemies/Ships/Interceptor</div>
+<div class="tags"><span>&#54632;&#51116;&#44592;</span></div>
+<h4>&#49828;&#53487;</h4>
+<table>
+<tr><td>HP</td><td class="value">12</td></tr>
+<tr><td>&#51060;&#46041; &#49549;&#46020;</td><td class="value">12.1 (&#215;2.2)</td></tr>
+<tr><td>&#49440;&#54924; &#49549;&#46020;</td><td class="value">240&#176;/&#52488; (&#215;2.4)</td></tr>
+<tr><td>&#44592;&#46041;&#49457;</td><td class="value">1</td></tr>
+<tr><td>&#53456;&#51648; &#44144;&#47532;</td><td class="value">45</td></tr>
+<tr><td>&#44277;&#44201; &#44144;&#47532;</td><td class="value">24</td></tr>
+<tr><td>&#53356;&#44592; (&#52572;&#45824; &#54253;)</td><td class="value">2.184 (&#44592;&#51456; &#215;0.6)</td></tr>
+<tr><td title="&#49440;&#52404; &#54532;&#47532;&#54073;&#50640; &#45804;&#47536; &#54924;&#51204; &#54252;&#53457; &#54028;&#53944;&#51032; &#49688;&#51077;&#45768;&#45796;.">&#54252;&#53457; &#49688;</td><td class="value">&#50630;&#51020;</td></tr>
+</table>
+<h4>&#44592;&#48376; &#49324;&#44201; &#8212; &#50672;&#49324;</h4>
+<table>
+<tr><td>&#53444;&#45817; &#54588;&#54644;</td><td class="value">1</td></tr>
+<tr><td>&#53444;&#49549;</td><td class="value">14</td></tr>
+<tr><td>&#53444; &#49688;&#47749;</td><td class="value">1.7&#52488;</td></tr>
+<tr><td>&#53444; &#46020;&#45804; &#44144;&#47532;</td><td class="value">23.8</td></tr>
+<tr><td>&#53444; &#54140;&#51664;</td><td class="value">6&#176;</td></tr>
+<tr><td>&#49933;&#50676;&#54252; &#44036;&#44201;</td><td class="value">0.5</td></tr>
+<tr><td title="&#47784;&#46304; &#49440;&#52404;&#44032; &#54632;&#44760; &#50416;&#45716; &#44050;&#51077;&#45768;&#45796;.">&#48156;&#49324; &#44036;&#44201;</td><td class="value">0.4&#52488;</td></tr>
+<tr><td title="&#47784;&#46304; &#49440;&#52404;&#44032; &#54632;&#44760; &#50416;&#45716; &#44050;&#51077;&#45768;&#45796;.">&#50672;&#49324; &#49688;</td><td class="value">3</td></tr>
+<tr><td title="&#47784;&#46304; &#49440;&#52404;&#44032; &#54632;&#44760; &#50416;&#45716; &#44050;&#51077;&#45768;&#45796;.">&#50672;&#49324; &#54980; &#55092;&#49885;</td><td class="value">2.2&#52488;</td></tr>
+</table>
+</article>
+<article class="card" id="enemy-Drone"><h3>&#51088;&#54253; &#46300;&#47200;</h3>
+<div class="sub">Drone  &#183;  Enemies/Ships/Drone</div>
+<div class="tags"><span>&#51088;&#54253;</span><span>&#44592;&#48152; &#53364;&#47000;&#49828;: &#51204;&#53804;&#44592;</span></div>
+<h4>&#49828;&#53487;</h4>
+<table>
+<tr><td>HP</td><td class="value">120</td></tr>
+<tr><td>&#51060;&#46041; &#49549;&#46020;</td><td class="value">9.9 (&#215;1.8)</td></tr>
+<tr><td>&#49440;&#54924; &#49549;&#46020;</td><td class="value">200&#176;/&#52488; (&#215;2)</td></tr>
+<tr><td>&#44592;&#46041;&#49457;</td><td class="value">1</td></tr>
+<tr><td>&#53456;&#51648; &#44144;&#47532;</td><td class="value">45</td></tr>
+<tr><td>&#44277;&#44201; &#44144;&#47532;</td><td class="value">24</td></tr>
+<tr><td>&#53356;&#44592; (&#52572;&#45824; &#54253;)</td><td class="value">1.638 (&#44592;&#51456; &#215;0.45)</td></tr>
+<tr><td title="&#49440;&#52404; &#54532;&#47532;&#54073;&#50640; &#45804;&#47536; &#54924;&#51204; &#54252;&#53457; &#54028;&#53944;&#51032; &#49688;&#51077;&#45768;&#45796;.">&#54252;&#53457; &#49688;</td><td class="value">&#50630;&#51020;</td></tr>
+</table>
+<h4>&#51088;&#54253;</h4>
+<table>
+<tr><td>&#44592;&#54253; &#49884;&#51089; &#44144;&#47532;</td><td class="value">5</td></tr>
+<tr><td>&#49888;&#44288; &#49884;&#44036;</td><td class="value">0.8&#52488;</td></tr>
+<tr><td>&#54253;&#48156; &#48152;&#44221;</td><td class="value">5.5</td></tr>
+<tr><td>&#54588;&#54644;</td><td class="value">8</td></tr>
+<tr><td>&#44592;&#54253; &#51473; &#49549;&#46020; &#48708;&#50984;</td><td class="value">&#215;0.5</td></tr>
+</table>
+</article>
+<article class="card" id="enemy-Diplomat"><h3>&#50808;&#44368;&#49440;</h3>
+<div class="sub">Diplomat  &#183;  Enemies/Ships/Diplomat</div>
+<div class="tags"><span>4&#50672;&#51109; &#54252;&#53457;</span><span>&#44592;&#48152; &#53364;&#47000;&#49828;: &#53076;&#47476;&#48307;</span><span>&#48516;&#45824; &#48372;&#54840;&#47561;</span><span>&#48120;&#49324;&#51068; &#54253;&#44201;</span></div>
+<h4>&#49828;&#53487;</h4>
+<table>
+<tr><td>HP</td><td class="value">150</td></tr>
+<tr><td>&#51060;&#46041; &#49549;&#46020;</td><td class="value">4.675 (&#215;0.85)</td></tr>
+<tr><td>&#49440;&#54924; &#49549;&#46020;</td><td class="value">75&#176;/&#52488; (&#215;0.75)</td></tr>
+<tr><td>&#44592;&#46041;&#49457;</td><td class="value">0.45</td></tr>
+<tr><td>&#53456;&#51648; &#44144;&#47532;</td><td class="value">45</td></tr>
+<tr><td>&#44277;&#44201; &#44144;&#47532;</td><td class="value">24</td></tr>
+<tr><td>&#53356;&#44592; (&#51204;&#51109;)</td><td class="value">13.104 (&#44592;&#51456; &#215;3.6)</td></tr>
+<tr><td title="&#49440;&#52404; &#54532;&#47532;&#54073;&#50640; &#45804;&#47536; &#54924;&#51204; &#54252;&#53457; &#54028;&#53944;&#51032; &#49688;&#51077;&#45768;&#45796;.">&#54252;&#53457; &#49688;</td><td class="value">4</td></tr>
+</table>
+<h4>&#44592;&#48376; &#49324;&#44201; &#8212; &#50672;&#49324;</h4>
+<table>
+<tr><td>&#53444;&#45817; &#54588;&#54644;</td><td class="value">1</td></tr>
+<tr><td>&#53444;&#49549;</td><td class="value">14</td></tr>
+<tr><td>&#53444; &#49688;&#47749;</td><td class="value">1.7&#52488;</td></tr>
+<tr><td>&#53444; &#46020;&#45804; &#44144;&#47532;</td><td class="value">23.8</td></tr>
+<tr><td>&#53444; &#54140;&#51664;</td><td class="value">6&#176;</td></tr>
+<tr><td>&#54252;&#53457; &#51068;&#51228;&#49324;&#44201; &#44036;&#44201;</td><td class="value">0.8&#52488;</td></tr>
+<tr><td title="&#47784;&#46304; &#49440;&#52404;&#44032; &#54632;&#44760; &#50416;&#45716; &#44050;&#51077;&#45768;&#45796;.">&#48156;&#49324; &#44036;&#44201;</td><td class="value">0.4&#52488;</td></tr>
+<tr><td title="&#47784;&#46304; &#49440;&#52404;&#44032; &#54632;&#44760; &#50416;&#45716; &#44050;&#51077;&#45768;&#45796;.">&#50672;&#49324; &#49688;</td><td class="value">3</td></tr>
+<tr><td title="&#47784;&#46304; &#49440;&#52404;&#44032; &#54632;&#44760; &#50416;&#45716; &#44050;&#51077;&#45768;&#45796;.">&#50672;&#49324; &#54980; &#55092;&#49885;</td><td class="value">2.2&#52488;</td></tr>
+</table>
+<h4>&#53945;&#49688; &#8212; &#48516;&#45824; &#48372;&#54840;&#47561;</h4>
+<table>
+<tr><td>&#44036;&#44201;</td><td class="value">8&#52488;</td></tr>
+<tr><td>&#48152;&#44221;</td><td class="value">20</td></tr>
+<tr><td>&#48372;&#54840;&#47561; &#50577;</td><td class="value">30</td></tr>
+<tr><td>&#51648;&#49549; &#49884;&#44036;</td><td class="value">6&#52488;</td></tr>
+</table>
+<h4>&#53945;&#49688; &#8212; &#48120;&#49324;&#51068; &#54253;&#44201;</h4>
+<table>
+<tr><td>&#44036;&#44201;</td><td class="value">7&#52488;</td></tr>
+<tr><td>&#51312;&#51456; / &#48156;&#49324; &#49884;&#44036;</td><td class="value">1.2&#52488; / 2.4&#52488;</td></tr>
+<tr><td>&#48120;&#49324;&#51068; &#49688;</td><td class="value">8</td></tr>
+<tr><td>&#48708;&#54665; &#49884;&#44036;</td><td class="value">1.4&#52488;</td></tr>
+<tr><td>&#54253;&#48156; &#48152;&#44221;</td><td class="value">3.5</td></tr>
+<tr><td>&#54588;&#54644;</td><td class="value">3</td></tr>
+</table>
+</article>
+<article class="card" id="enemy-Destroyer"><h3>&#44396;&#52629;&#54632;</h3>
+<div class="sub">Destroyer  &#183;  Enemies/Ships/Destroyer</div>
+<div class="tags"><span>&#48512;&#52292;&#44852; &#49324;&#44201;</span><span>&#44592;&#48152; &#53364;&#47000;&#49828;: &#53076;&#47476;&#48307;</span></div>
+<h4>&#49828;&#53487;</h4>
+<table>
+<tr><td>HP</td><td class="value">150</td></tr>
+<tr><td>&#51060;&#46041; &#49549;&#46020;</td><td class="value">4.675 (&#215;0.85)</td></tr>
+<tr><td>&#49440;&#54924; &#49549;&#46020;</td><td class="value">75&#176;/&#52488; (&#215;0.75)</td></tr>
+<tr><td>&#44592;&#46041;&#49457;</td><td class="value">0.45</td></tr>
+<tr><td>&#53456;&#51648; &#44144;&#47532;</td><td class="value">45</td></tr>
+<tr><td>&#44277;&#44201; &#44144;&#47532;</td><td class="value">24</td></tr>
+<tr><td>&#53356;&#44592; (&#51204;&#51109;)</td><td class="value">9.1 (&#44592;&#51456; &#215;2.5)</td></tr>
+<tr><td title="&#49440;&#52404; &#54532;&#47532;&#54073;&#50640; &#45804;&#47536; &#54924;&#51204; &#54252;&#53457; &#54028;&#53944;&#51032; &#49688;&#51077;&#45768;&#45796;.">&#54252;&#53457; &#49688;</td><td class="value">2</td></tr>
+</table>
+<h4>&#44592;&#48376; &#49324;&#44201; &#8212; &#48512;&#52292;&#44852;</h4>
+<table>
+<tr><td>&#53444;&#45817; &#54588;&#54644;</td><td class="value">1</td></tr>
+<tr><td>&#53444;&#49549;</td><td class="value">14</td></tr>
+<tr><td>&#53444; &#49688;&#47749;</td><td class="value">1.7&#52488;</td></tr>
+<tr><td>&#53444; &#46020;&#45804; &#44144;&#47532;</td><td class="value">23.8</td></tr>
+<tr><td>&#53444; &#54140;&#51664;</td><td class="value">6&#176;</td></tr>
+<tr><td>&#54056;&#53556; &#44036;&#44201;</td><td class="value">4&#52488;</td></tr>
+<tr><td>&#50696;&#44256; &#49884;&#44036;</td><td class="value">0.8&#52488;</td></tr>
+<tr><td>&#53444; &#49688;</td><td class="value">7</td></tr>
+<tr><td>&#48512;&#52292;&#44852; &#44033;&#46020;</td><td class="value">60&#176;</td></tr>
+</table>
+</article>
+<article class="card" id="enemy-Dreadnought"><h3>&#46300;&#47112;&#46300;&#45432;&#53944;</h3>
+<div class="sub">Dreadnought  &#183;  Enemies/Ships/Dreadnought</div>
+<div class="tags"><span>&#45208;&#49440; &#49324;&#44201;</span><span>&#44592;&#48152; &#53364;&#47000;&#49828;: &#51204;&#54632;</span><span>&#46300;&#47200; &#44201;&#45225;&#44256;</span></div>
+<h4>&#49828;&#53487;</h4>
+<table>
+<tr><td>HP</td><td class="value">240</td></tr>
+<tr><td>&#51060;&#46041; &#49549;&#46020;</td><td class="value">3.3 (&#215;0.6)</td></tr>
+<tr><td>&#49440;&#54924; &#49549;&#46020;</td><td class="value">35&#176;/&#52488; (&#215;0.35)</td></tr>
+<tr><td>&#44592;&#46041;&#49457;</td><td class="value">0.2</td></tr>
+<tr><td>&#53456;&#51648; &#44144;&#47532;</td><td class="value">45</td></tr>
+<tr><td>&#44277;&#44201; &#44144;&#47532;</td><td class="value">24</td></tr>
+<tr><td>&#53356;&#44592; (&#51204;&#51109;)</td><td class="value">16.016 (&#44592;&#51456; &#215;4.4)</td></tr>
+<tr><td title="&#49440;&#52404; &#54532;&#47532;&#54073;&#50640; &#45804;&#47536; &#54924;&#51204; &#54252;&#53457; &#54028;&#53944;&#51032; &#49688;&#51077;&#45768;&#45796;.">&#54252;&#53457; &#49688;</td><td class="value">4</td></tr>
+</table>
+<h4>&#44592;&#48376; &#49324;&#44201; &#8212; &#45208;&#49440;</h4>
+<table>
+<tr><td>&#53444;&#45817; &#54588;&#54644;</td><td class="value">2</td></tr>
+<tr><td>&#53444;&#49549;</td><td class="value">12</td></tr>
+<tr><td>&#53444; &#49688;&#47749;</td><td class="value">2&#52488;</td></tr>
+<tr><td>&#53444; &#46020;&#45804; &#44144;&#47532;</td><td class="value">24</td></tr>
+<tr><td>&#53444; &#54140;&#51664;</td><td class="value">6&#176;</td></tr>
+<tr><td>&#54056;&#53556; &#44036;&#44201;</td><td class="value">2.5&#52488;</td></tr>
+<tr><td>&#50696;&#44256; &#49884;&#44036;</td><td class="value">0.35&#52488;</td></tr>
+<tr><td>&#45208;&#49440; &#54036; &#49688;</td><td class="value">3</td></tr>
+<tr><td>&#51068;&#51228;&#49324;&#44201; &#54943;&#49688;</td><td class="value">5</td></tr>
+<tr><td>&#51068;&#51228;&#49324;&#44201; &#44036;&#44201;</td><td class="value">0.35&#52488;</td></tr>
+<tr><td>&#54924;&#51204; &#44033;&#46020;</td><td class="value">17&#176;</td></tr>
+</table>
+<h4>&#53945;&#49688; &#8212; &#46300;&#47200; &#44201;&#45225;&#44256;</h4>
+<table>
+<tr><td>&#49324;&#50857;</td><td class="value">&#50696;</td></tr>
+<tr><td>&#48156;&#51652; &#44592;&#51333;</td><td class="value">&#51088;&#54253; &#46300;&#47200;</td></tr>
+<tr><td>&#51116;&#44148;&#51312; &#44036;&#44201;</td><td class="value">10&#52488;</td></tr>
+<tr><td>&#47784;&#54632;&#45817; &#52572;&#45824;</td><td class="value">3</td></tr>
+<tr><td>&#51204;&#51109; &#51204;&#52404; &#52572;&#45824;</td><td class="value">6</td></tr>
+</table>
+</article>
+</div></section>
+<section><h2 id="enemy-shared">&#51201; &#44277;&#50857; &#49444;&#51221;</h2>
+<p class="note">&#47784;&#46304; &#51201; &#49440;&#52404;&#51032; &#44508;&#52825;&#51060; &#45208;&#50724;&#45716; &#50896;&#48376; &#44050;&#51077;&#45768;&#45796;. &#54637;&#47785;&#50640; &#54252;&#51064;&#53552;&#47484; &#50732;&#47532;&#47732; &#49444;&#47749;&#51060; &#48372;&#51077;&#45768;&#45796;.</p>
+<div class="cards">
+<article class="card" id="enemy-settings"><h3>&#51201; &#54632;&#49440; &#49444;&#51221;</h3>
+<div class="sub">Assets/Settings/Gameplay/Enemies/EnemyShipSettings.asset</div>
+<table>
+<tr><td>Speed</td><td class="value">5.5</td></tr>
+<tr><td>Turn Speed</td><td class="value">100</td></tr>
+<tr><td>Acceleration</td><td class="value">8</td></tr>
+<tr><td>Braking</td><td class="value">8</td></tr>
+<tr><td>Turn Smooth Time</td><td class="value">0.28</td></tr>
+<tr><td>Detection Range</td><td class="value">45</td></tr>
+<tr><td>Lose Range</td><td class="value">65</td></tr>
+<tr><td>Attack Range</td><td class="value">24</td></tr>
+<tr><td>Minimum Range</td><td class="value">9</td></tr>
+<tr><td>Patrol Radius</td><td class="value">12</td></tr>
+<tr><td>Fire Interval</td><td class="value">0.4</td></tr>
+<tr><td>Maximum Hp</td><td class="value">80</td></tr>
+<tr><td>Shot Damage</td><td class="value">1</td></tr>
+<tr><td>Beam Duration</td><td class="value">0.1</td></tr>
+<tr><td>Beam Charge Duration</td><td class="value">0.9</td></tr>
+<tr><td>Beam Range</td><td class="value">32</td></tr>
+<tr><td>Beam Radius</td><td class="value">0.35</td></tr>
+<tr><td>Projectile Speed</td><td class="value">14</td></tr>
+<tr><td>Projectile Lifetime</td><td class="value">1.7</td></tr>
+<tr><td title="Fighters and dropships: quicker rounds that catch a moving player, over about the same reach.">Light Projectile Speed</td><td class="value">18</td></tr>
+<tr><td>Light Projectile Lifetime</td><td class="value">1.4</td></tr>
+<tr><td>Projectile Radius</td><td class="value">0.15</td></tr>
+<tr><td>Projectile Capacity</td><td class="value">20</td></tr>
+<tr><td title="The corvette&#39;s charged beam.">Special Attack Enabled</td><td class="value">&#50696;</td></tr>
+<tr><td>Special Attack Interval</td><td class="value">8</td></tr>
+<tr><td>Engagement Distance</td><td class="value">18</td></tr>
+<tr><td>Attack Speed Fraction</td><td class="value">0.75</td></tr>
+<tr><td>Aim Turn Speed</td><td class="value">180</td></tr>
+<tr><td title="Fixed bursts, used only with gun energy off.">Burst Count</td><td class="value">3</td></tr>
+<tr><td>Burst Recovery</td><td class="value">2.2</td></tr>
+<tr><td title="Degrees either side of the aim an ordinary shot may stray.">Shot Spread</td><td class="value">6</td></tr>
+<tr><td>Gun Energy Enabled</td><td class="value">&#50696;</td></tr>
+<tr><td>Gun Energy Capacity</td><td class="value">8</td></tr>
+<tr><td>Gun Energy Shot Cost</td><td class="value">1</td></tr>
+<tr><td>Gun Energy Regeneration</td><td class="value">1</td></tr>
+<tr><td>Gun Energy Resume Fraction</td><td class="value">0.5</td></tr>
+<tr><td>Strafe And Fire</td><td class="value">&#50696;</td></tr>
+<tr><td>Strafe Band Minimum</td><td class="value">8</td></tr>
+<tr><td>Strafe Band Maximum</td><td class="value">12</td></tr>
+<tr><td>Strafe Orbit Rate</td><td class="value">30</td></tr>
+<tr><td>Strafe Reverse Minimum</td><td class="value">3</td></tr>
+<tr><td>Strafe Reverse Maximum</td><td class="value">5</td></tr>
+<tr><td>Dropship Strafe</td><td class="value">&#50696;</td></tr>
+<tr><td>Dropship Band Minimum</td><td class="value">10</td></tr>
+<tr><td>Dropship Band Maximum</td><td class="value">13</td></tr>
+<tr><td>Dropship Orbit Rate</td><td class="value">15</td></tr>
+<tr><td>Dropship Reverse Minimum</td><td class="value">5</td></tr>
+<tr><td>Dropship Reverse Maximum</td><td class="value">8</td></tr>
+<tr><td title="Degrees the nose is turned off the player towards the way the dropship slides.">Dropship Nose Offset</td><td class="value">35</td></tr>
+<tr><td title="The field prefab the spawner creates; without one, no mines are laid.">Mine Field</td><td class="value">EnemyMineField</td></tr>
+<tr><td>Mine Lay Interval</td><td class="value">5</td></tr>
+<tr><td title="Mines down at once across every ship; they stay until set off or shot, and the oldest gives way past this.">Mine Capacity</td><td class="value">6</td></tr>
+<tr><td>Mine Arm Delay</td><td class="value">1</td></tr>
+<tr><td>Mine Trigger Radius</td><td class="value">2.5</td></tr>
+<tr><td>Mine Blast Radius</td><td class="value">3.5</td></tr>
+<tr><td>Mine Damage</td><td class="value">3</td></tr>
+<tr><td title="Damage a mine takes before it is shot down.">Mine Hp</td><td class="value">10</td></tr>
+<tr><td title="An armed mine creeps towards a player this close; 0 keeps mines where they were laid.">Mine Seek Range</td><td class="value">8</td></tr>
+<tr><td>Mine Seek Speed</td><td class="value">5</td></tr>
+<tr><td title="Mines keep this far apart, laid or creeping, so two never sit on top of each other.">Mine Spacing</td><td class="value">2</td></tr>
+<tr><td>Sparrow Hit And Run</td><td class="value">&#50696;</td></tr>
+<tr><td>Hit And Run Pass Offset</td><td class="value">3.5</td></tr>
+<tr><td>Hit And Run Pass Distance</td><td class="value">7</td></tr>
+<tr><td>Hit And Run Return Distance</td><td class="value">10</td></tr>
+<tr><td>Hit And Run Break Angle</td><td class="value">45</td></tr>
+<tr><td>Hit And Run Fire Cone</td><td class="value">20</td></tr>
+<tr><td>Sparrow Missile Interval</td><td class="value">8</td></tr>
+<tr><td>Sparrow Missile Speed</td><td class="value">11</td></tr>
+<tr><td>Sparrow Missile Damage</td><td class="value">2</td></tr>
+<tr><td>Corvette Hp</td><td class="value">150</td></tr>
+<tr><td title="Each shot is two parallel bullets this far either side of the aim.">Corvette Gun Spacing</td><td class="value">0.5</td></tr>
+<tr><td>Corvette Beam Damage</td><td class="value">4</td></tr>
+<tr><td>Battleship Hp</td><td class="value">240</td></tr>
+<tr><td>Battleship Damage Multiplier</td><td class="value">0.5</td></tr>
+<tr><td>Battleship Gun Damage</td><td class="value">2</td></tr>
+<tr><td>Pattern Cooldown</td><td class="value">3</td></tr>
+<tr><td>Pattern Recover</td><td class="value">0.6</td></tr>
+<tr><td>Shockwave Range</td><td class="value">14</td></tr>
+<tr><td>Shockwave Radius</td><td class="value">14</td></tr>
+<tr><td>Shockwave Telegraph</td><td class="value">1.1</td></tr>
+<tr><td>Shockwave Damage</td><td class="value">6</td></tr>
+<tr><td title="Keep within the bullets&#39; reach (speed times lifetime).">Broadside Maximum Range</td><td class="value">24</td></tr>
+<tr><td>Broadside Telegraph</td><td class="value">0.8</td></tr>
+<tr><td>Broadside Shots</td><td class="value">7</td></tr>
+<tr><td>Broadside Spread</td><td class="value">60</td></tr>
+<tr><td>Fighter Speed Multiplier</td><td class="value">1.25</td></tr>
+<tr><td>Fighter Turn Multiplier</td><td class="value">1.6</td></tr>
+<tr><td>Sparrow Speed Multiplier</td><td class="value">1.25</td></tr>
+<tr><td>Sparrow Turn Multiplier</td><td class="value">1.6</td></tr>
+<tr><td>Dropship Speed Multiplier</td><td class="value">1.05</td></tr>
+<tr><td>Dropship Turn Multiplier</td><td class="value">1.2</td></tr>
+<tr><td>Corvette Speed Multiplier</td><td class="value">0.85</td></tr>
+<tr><td>Corvette Turn Multiplier</td><td class="value">0.75</td></tr>
+<tr><td>Battleship Speed Multiplier</td><td class="value">0.6</td></tr>
+<tr><td>Battleship Turn Multiplier</td><td class="value">0.35</td></tr>
+<tr><td title="0 to 1: how far off the nose each hull may travel. Heavy hulls turn to go somewhere instead of slipping sideways.">Fighter Agility</td><td class="value">1</td></tr>
+<tr><td>Sparrow Agility</td><td class="value">1</td></tr>
+<tr><td>Dropship Agility</td><td class="value">0.75</td></tr>
+<tr><td>Corvette Agility</td><td class="value">0.45</td></tr>
+<tr><td>Battleship Agility</td><td class="value">0.2</td></tr>
+<tr><td title="A decoy further than this from the enemy goes unnoticed.">Decoy Range</td><td class="value">40</td></tr>
+<tr><td title="The decoy is taken once it is no further than this share of the player&#39;s distance.">Decoy Switch Ratio</td><td class="value">1.3</td></tr>
+<tr><td title="It is let go past this larger share of the player&#39;s distance.">Decoy Release Ratio</td><td class="value">2</td></tr>
+<tr><td>Target Hold Time</td><td class="value">2.5</td></tr>
+<tr><td title="The special attacks each hull carries. The values of each attack are shared by every hull carrying it.">Hull Specials</td><td class="value">10&#44060; &#54637;&#47785;</td></tr>
+<tr><td title="Interceptors launched by battleships: their flight, hull points and guns.">Interceptors</td><td class="value">InterceptorSettings</td></tr>
+<tr><td title="Kamikaze drones: their flight, hull points and blast.">Kamikaze Drone</td><td class="value">KamikazeDroneSettings</td></tr>
+<tr><td title="The attacks of the destroyer, dreadnought and diplomat.">Basic Attacks</td><td class="value">EnemyBasicAttackSettings</td></tr>
+</table>
+</article>
+<article class="card" id="enemy-basic-attacks"><h3>&#51201; &#44592;&#48376; &#44277;&#44201;&#183;&#48372;&#54840;&#47561;</h3>
+<div class="sub">Assets/Settings/Gameplay/Enemies/EnemyBasicAttackSettings.asset</div>
+<table>
+<tr><td title="Least seconds between salvos, so its guns do not fire four bullets on every shot. Firing requests it skips still use gun energy.">Salvo Interval</td><td class="value">0.8</td></tr>
+<tr><td title="Seconds of rest between fans.">Fan Interval</td><td class="value">4</td></tr>
+<tr><td>Fan Bullets</td><td class="value">7</td></tr>
+<tr><td title="The fan&#39;s full width, in degrees.">Fan Arc</td><td class="value">60</td></tr>
+<tr><td title="Seconds of warning; the aim is fixed when the warning begins, so moving off the line dodges the fan.">Fan Charge Duration</td><td class="value">0.8</td></tr>
+<tr><td title="Seconds of rest between spirals.">Spiral Interval</td><td class="value">2.5</td></tr>
+<tr><td title="Bullets in each volley, evenly round the ship, on a hull without turrets. With turrets, each fires one.">Spiral Arms</td><td class="value">3</td></tr>
+<tr><td title="Volleys in one spiral. Bullets per volley times volleys should stay within the projectile capacity.">Spiral Volleys</td><td class="value">5</td></tr>
+<tr><td>Spiral Volley Interval</td><td class="value">0.35</td></tr>
+<tr><td title="Seconds the turrets have to swing round to their sides before the first volley.">Spiral Charge Duration</td><td class="value">0.35</td></tr>
+<tr><td title="How far each volley turns from the last, in degrees.">Spiral Step</td><td class="value">17</td></tr>
+<tr><td title="Slower than ordinary bullets, so the gaps can be read and flown through.">Spiral Bullet Speed</td><td class="value">12</td></tr>
+<tr><td>Spiral Bullet Lifetime</td><td class="value">2</td></tr>
+<tr><td title="Seconds between pulses while it fights.">Shield Interval</td><td class="value">8</td></tr>
+<tr><td>Shield Radius</td><td class="value">20</td></tr>
+<tr><td title="Damage a shield absorbs.">Shield Amount</td><td class="value">30</td></tr>
+<tr><td title="Seconds a shield lasts.">Shield Duration</td><td class="value">6</td></tr>
+<tr><td>Own Shield Capacity</td><td class="value">60</td></tr>
+<tr><td title="Seconds without a hit before the gauge starts to refill.">Own Shield Regen Delay</td><td class="value">3</td></tr>
+<tr><td title="Points the gauge refills each second once it has started; 0 never refills it.">Own Shield Regen Rate</td><td class="value">12</td></tr>
+<tr><td title="Seconds of rest between barrages.">Barrage Interval</td><td class="value">7</td></tr>
+<tr><td title="Seconds of warning while the lock follows the target.">Barrage Aim Duration</td><td class="value">1.2</td></tr>
+<tr><td title="Seconds the ship keeps firing, each missile at where the target is when it leaves.">Barrage Fire Duration</td><td class="value">2.4</td></tr>
+<tr><td>Barrage Launch Interval</td><td class="value">0.3</td></tr>
+<tr><td title="Each missile hits a target this close to where it lands.">Barrage Blast Radius</td><td class="value">3.5</td></tr>
+<tr><td>Barrage Damage</td><td class="value">3</td></tr>
+<tr><td title="Seconds from launch to landing, whatever the distance: a target that keeps moving is gone by then.">Barrage Flight Duration</td><td class="value">1.4</td></tr>
+<tr><td title="How high a missile climbs on its way.">Barrage Arc Height</td><td class="value">9</td></tr>
+<tr><td title="How far out to the side a missile swings on its way.">Barrage Arc Width</td><td class="value">10</td></tr>
+</table>
+</article>
+<article class="card" id="enemy-interceptors"><h3>&#50836;&#44201;&#44592;</h3>
+<div class="sub">Assets/Settings/Gameplay/Enemies/InterceptorSettings.asset</div>
+<table>
+<tr><td title="Seconds of fighting to rebuild one lost interceptor; losses are rebuilt one at a time.">Rebuild Interval</td><td class="value">8</td></tr>
+<tr><td title="Interceptors one battleship holds and launches together when it starts fighting; 0 turns its hangar off.">Battleship Capacity</td><td class="value">4</td></tr>
+<tr><td title="Interceptors airborne at once across all carriers; also the pool size. Below the capacity, a battleship&#39;s opening launch is cut short.">Global Maximum</td><td class="value">4</td></tr>
+<tr><td>Scuttle Delay Minimum</td><td class="value">1.5</td></tr>
+<tr><td>Scuttle Delay Maximum</td><td class="value">3</td></tr>
+<tr><td title="Seconds of the straight launch run out of the hangar.">Launch Duration</td><td class="value">1.2</td></tr>
+<tr><td title="How far past the hull side the launch run aims.">Launch Distance</td><td class="value">5</td></tr>
+<tr><td title="Seconds with nothing to fight, or with the carrier out of the fight, before it is recalled.">Recall Delay</td><td class="value">4</td></tr>
+<tr><td>Dock Radius</td><td class="value">2</td></tr>
+<tr><td title="A return longer than this docks anyway.">Return Timeout</td><td class="value">10</td></tr>
+<tr><td title="Targets further than this from the carrier are ignored: it stays by its carrier instead.">Leash Radius</td><td class="value">30</td></tr>
+<tr><td>Hp</td><td class="value">12</td></tr>
+<tr><td>Speed Multiplier</td><td class="value">2.2</td></tr>
+<tr><td>Turn Multiplier</td><td class="value">2.4</td></tr>
+<tr><td>Agility</td><td class="value">1</td></tr>
+<tr><td>Shot Damage</td><td class="value">1</td></tr>
+<tr><td title="Twin vulcans: each volley is two bullets this far either side of the nose. One volley per dive.">Gun Spacing</td><td class="value">0.5</td></tr>
+<tr><td title="Bullet size (visual and hit radius) relative to the other enemies&#39;, to suit the small hull.">Projectile Scale</td><td class="value">0.5</td></tr>
+</table>
+</article>
+<article class="card" id="enemy-drones"><h3>&#51088;&#54253; &#46300;&#47200;</h3>
+<div class="sub">Assets/Settings/Gameplay/Enemies/KamikazeDroneSettings.asset</div>
+<table>
+<tr><td title="Seconds of fighting to rebuild one lost drone; losses are rebuilt one at a time.">Rebuild Interval</td><td class="value">10</td></tr>
+<tr><td title="Drones one carrier holds and launches together when it starts fighting; 0 turns the hangars off.">Carrier Capacity</td><td class="value">3</td></tr>
+<tr><td title="Drones airborne at once across all carriers; also the pool size.">Global Maximum</td><td class="value">6</td></tr>
+<tr><td title="When the carrier is lost its drones blow up, harmlessly, after a delay in this range.">Scuttle Delay Minimum</td><td class="value">1.5</td></tr>
+<tr><td>Scuttle Delay Maximum</td><td class="value">3</td></tr>
+<tr><td>Launch Duration</td><td class="value">0.8</td></tr>
+<tr><td>Launch Distance</td><td class="value">4</td></tr>
+<tr><td>Recall Delay</td><td class="value">4</td></tr>
+<tr><td>Dock Radius</td><td class="value">2</td></tr>
+<tr><td>Return Timeout</td><td class="value">10</td></tr>
+<tr><td title="Targets further than this from the carrier are ignored, so a boost out of reach sends drones home.">Leash Radius</td><td class="value">40</td></tr>
+<tr><td>Hp</td><td class="value">120</td></tr>
+<tr><td>Speed Multiplier</td><td class="value">1.8</td></tr>
+<tr><td>Turn Multiplier</td><td class="value">2</td></tr>
+<tr><td>Agility</td><td class="value">1</td></tr>
+<tr><td title="The fuse lights when the target comes this close.">Arm Range</td><td class="value">5</td></tr>
+<tr><td title="Seconds of warning between the fuse lighting and the blast; shooting the drone down in this time stops the blast.">Fuse Duration</td><td class="value">0.8</td></tr>
+<tr><td title="A target this close to the drone when it blows up takes the damage.">Blast Radius</td><td class="value">5.5</td></tr>
+<tr><td>Damage</td><td class="value">8</td></tr>
+<tr><td title="Share of its speed the drone keeps while the fuse burns, so a boost can outrun the blast.">Armed Speed Fraction</td><td class="value">0.5</td></tr>
+</table>
+</article>
+<article class="card" id="enemy-sizes"><h3>&#49440;&#52404; &#53356;&#44592;</h3>
+<div class="sub">Assets/Settings/Gameplay/Enemies/EnemyHullSizeSettings.asset</div>
+<table>
+<tr><td title="The player ship&#39;s length in world units, which the ratios below are of.">Reference Length</td><td class="value">3.64</td></tr>
+<tr><td>Fighter Length Ratio</td><td class="value">1.2</td></tr>
+<tr><td>Dropship Length Ratio</td><td class="value">1.6</td></tr>
+<tr><td>Corvette Length Ratio</td><td class="value">2.5</td></tr>
+<tr><td>Battleship Length Ratio</td><td class="value">4.4</td></tr>
+<tr><td>Sparrow Length Ratio</td><td class="value">1.2</td></tr>
+<tr><td title="The interceptor is wider than long, so this ratio sizes its larger span (length or wingspan).">Interceptor Span Ratio</td><td class="value">0.6</td></tr>
+<tr><td title="The kamikaze drone is wider than long too, and sized the same way.">Drone Span Ratio</td><td class="value">0.45</td></tr>
+<tr><td>Diplomat Length Ratio</td><td class="value">3.6</td></tr>
+</table>
+</article>
+</div></section>
+</main>
+<script>
+const filter = document.getElementById('filter');
+filter.addEventListener('input', () => {
+  const words = filter.value.trim().toLowerCase().split(/\s+/).filter(w => w);
+  document.querySelectorAll('.card').forEach(card => {
+    const text = card.textContent.toLowerCase();
+    card.classList.toggle('hidden', !words.every(w => text.includes(w)));
+  });
+});
+</script>
+</body></html>
